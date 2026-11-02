@@ -1,0 +1,2711 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏆 TEAM BATTLE CAMERA — Decimal Treasure Hunt</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-display: 'Fredoka', sans-serif;
+            --font-body: 'Nunito', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            user-select: none;
+        }
+
+        .font-display {
+            font-family: var(--font-display);
+        }
+
+        /* 3D Cartoon Adventure Buttons & Cards */
+        .btn-3d-blue {
+            background: linear-gradient(180deg, #38bdf8 0%, #0284c7 100%);
+            border: 4px solid #e0f2fe;
+            box-shadow: 0 8px 0 #0369a1, 0 12px 20px rgba(0, 0, 0, 0.35);
+            transition: all 0.12s ease;
+        }
+        .btn-3d-blue:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 0 #0369a1, 0 14px 24px rgba(0, 0, 0, 0.4);
+        }
+        .btn-3d-blue:active {
+            transform: translateY(6px);
+            box-shadow: 0 2px 0 #0369a1, 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-3d-red {
+            background: linear-gradient(180deg, #fb7185 0%, #e11d48 100%);
+            border: 4px solid #ffe4e6;
+            box-shadow: 0 8px 0 #9f1239, 0 12px 20px rgba(0, 0, 0, 0.35);
+            transition: all 0.12s ease;
+        }
+        .btn-3d-red:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 0 #9f1239, 0 14px 24px rgba(0, 0, 0, 0.4);
+        }
+        .btn-3d-red:active {
+            transform: translateY(6px);
+            box-shadow: 0 2px 0 #9f1239, 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-3d-gold {
+            background: linear-gradient(180deg, #fde047 0%, #eab308 55%, #ca8a04 100%);
+            border: 4px solid #fef9c3;
+            box-shadow: 0 8px 0 #854d0e, 0 12px 24px rgba(0, 0, 0, 0.4);
+            color: #422006;
+            transition: all 0.12s ease;
+        }
+        .btn-3d-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 0 #854d0e, 0 15px 28px rgba(0, 0, 0, 0.45);
+        }
+        .btn-3d-gold:active {
+            transform: translateY(6px);
+            box-shadow: 0 2px 0 #854d0e, 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-3d-emerald {
+            background: linear-gradient(180deg, #34d399 0%, #059669 100%);
+            border: 4px solid #d1fae5;
+            box-shadow: 0 8px 0 #065f46, 0 12px 20px rgba(0, 0, 0, 0.35);
+            transition: all 0.12s ease;
+        }
+        .btn-3d-emerald:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 0 #065f46, 0 14px 24px rgba(0, 0, 0, 0.4);
+        }
+        .btn-3d-emerald:active {
+            transform: translateY(6px);
+            box-shadow: 0 2px 0 #065f46, 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-3d-purple {
+            background: linear-gradient(180deg, #c084fc 0%, #7e22ce 100%);
+            border: 4px solid #f3e8ff;
+            box-shadow: 0 7px 0 #581c87, 0 10px 18px rgba(0, 0, 0, 0.35);
+            transition: all 0.12s ease;
+        }
+        .btn-3d-purple:active {
+            transform: translateY(5px);
+            box-shadow: 0 2px 0 #581c87;
+        }
+
+        .card-3d-panel {
+            background: rgba(15, 23, 42, 0.88);
+            backdrop-filter: blur(12px);
+            border: 5px solid rgba(255, 255, 255, 0.22);
+            box-shadow: 0 14px 0 rgba(0, 0, 0, 0.45), 0 22px 45px rgba(0, 0, 0, 0.6);
+        }
+
+        .wood-panel {
+            background: linear-gradient(180deg, #78350f 0%, #451a03 100%);
+            border: 5px solid #fbbf24;
+            box-shadow: 0 10px 0 #270e02, 0 16px 30px rgba(0,0,0,0.5);
+        }
+
+        /* Environment Dynamic Themes */
+        .env-bg-1 {
+            /* 🌳 Hutan Misterius */
+            background: radial-gradient(circle at 50% 20%, #15803d 0%, #064e3b 55%, #022c22 100%);
+        }
+        .env-bg-2 {
+            /* 🌊 Sungai Petualangan */
+            background: radial-gradient(circle at 50% 20%, #0284c7 0%, #0369a1 55%, #082f49 100%);
+        }
+        .env-bg-3 {
+            /* 🏔️ Pegunungan */
+            background: radial-gradient(circle at 50% 20%, #6366f1 0%, #3730a3 55%, #1e1b4b 100%);
+        }
+        .env-bg-4 {
+            /* 🕳️ Gua Rahasia */
+            background: radial-gradient(circle at 50% 20%, #7e22ce 0%, #3b0764 55%, #17032b 100%);
+        }
+        .env-bg-5 {
+            /* 🏝️ Pulau Harta Karun */
+            background: radial-gradient(circle at 50% 20%, #d97706 0%, #9a3412 55%, #431407 100%);
+        }
+
+        /* Animations */
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-float {
+            animation: floatSlow 3s ease-in-out infinite;
+        }
+
+        @keyframes pulseScale {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.07); }
+        }
+        .animate-pulse-scale {
+            animation: pulseScale 1.2s ease-in-out infinite;
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            75% { transform: scale(1.06); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .animate-pop {
+            animation: popIn 0.38s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        @keyframes scanLaser {
+            0% { top: 4%; opacity: 0.9; }
+            50% { top: 92%; opacity: 1; }
+            100% { top: 4%; opacity: 0.9; }
+        }
+        .laser-line {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #38bdf8, #fde047, #fb7185);
+            box-shadow: 0 0 20px #fde047, 0 0 35px #38bdf8;
+            animation: scanLaser 1.6s ease-in-out infinite;
+            z-index: 25;
+            pointer-events: none;
+        }
+
+        @keyframes chestGlow {
+            0%, 100% { filter: drop-shadow(0 0 25px #fde047) drop-shadow(0 0 55px #f59e0b); }
+            50% { filter: drop-shadow(0 0 45px #fef08a) drop-shadow(0 0 90px #eab308); }
+        }
+        .chest-glow {
+            animation: chestGlow 1.8s ease-in-out infinite;
+        }
+
+        @keyframes sunraySpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .animate-sunray {
+            animation: sunraySpin 20s linear infinite;
+        }
+
+        /* Text Stroke for Projector Readability */
+        .text-outline-dark {
+            text-shadow: 0 4px 0 rgba(0, 0, 0, 0.65), 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .text-outline-heavy {
+            text-shadow: -3px -3px 0 #0f172a, 3px -3px 0 #0f172a, -3px 3px 0 #0f172a, 3px 3px 0 #0f172a, 0 8px 0 rgba(0,0,0,0.55);
+        }
+
+        /* Print Styles for Printable Student Cards */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #printableArea, #printableArea * {
+                visibility: visible;
+            }
+            #printableArea {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                background: white !important;
+                color: black !important;
+            }
+            .print-page-break {
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body id="appBody" class="env-bg-1 min-h-screen text-white flex flex-col justify-between transition-colors duration-700 relative overflow-x-hidden">
+
+    <!-- AMBIENT FLOATING DECORATIONS -->
+    <div id="ambientDecor" class="fixed inset-0 pointer-events-none overflow-hidden z-0 opacity-25">
+        <div class="absolute top-12 left-10 text-6xl animate-float">🌿</div>
+        <div class="absolute top-28 right-16 text-6xl animate-float" style="animation-delay: 1s;">🧭</div>
+        <div class="absolute bottom-16 left-20 text-6xl animate-float" style="animation-delay: 1.5s;">💎</div>
+        <div class="absolute bottom-12 right-24 text-6xl animate-float" style="animation-delay: 0.5s;">🗺️</div>
+    </div>
+
+    <!-- CONFETTI CANVAS OVERLAY -->
+    <canvas id="confettiCanvas" class="fixed inset-0 pointer-events-none z-50 hidden"></canvas>
+
+    <!-- ENVIRONMENT TRANSITION BANNER OVERLAY -->
+    <div id="envTransitionOverlay" class="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md hidden flex-col items-center justify-center p-6 text-center">
+        <div class="animate-pop max-w-3xl w-full wood-panel rounded-3xl p-10 border-8 border-amber-400">
+            <div class="text-amber-300 font-display text-2xl md:text-3xl tracking-widest uppercase mb-2">🗺️ MEMASUKI AREA BARU!</div>
+            <div id="envTransIcon" class="text-8xl md:text-9xl my-6 animate-bounce">🌳</div>
+            <h2 id="envTransTitle" class="font-display text-5xl md:text-7xl font-bold text-white text-outline-heavy mb-4">Hutan Misterius</h2>
+            <p id="envTransDesc" class="text-2xl md:text-3xl text-amber-100 font-bold">Siapkan kartu jawabanmu! Petualangan dimulai!</p>
+        </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- TOP PERMANENT PROJECTOR HUD (SCORE, MAP PIECES, CONTROLS) -->
+    <!-- ========================================================= -->
+    <header class="relative z-30 w-full px-3 py-2 md:px-6 md:py-3 bg-slate-950/80 backdrop-blur-md border-b-4 border-amber-400/50 shadow-2xl">
+        <div class="max-w-[1600px] mx-auto grid grid-cols-12 items-center gap-2 md:gap-4">
+            
+            <!-- TEAM A SCORE & MAP -->
+            <div class="col-span-5 md:col-span-4 bg-gradient-to-r from-sky-900/95 via-sky-800/90 to-sky-900/80 border-4 border-sky-400 rounded-2xl px-3 py-2 md:px-5 md:py-2.5 shadow-lg flex flex-col justify-between">
+                <div class="flex items-center justify-between gap-2">
+                    <div class="flex items-center gap-2 truncate">
+                        <span class="text-2xl md:text-3xl">🔵</span>
+                        <span id="hudTeamAName" class="font-display text-xl md:text-3xl font-bold text-sky-100 tracking-wide truncate text-outline-dark">TIM A</span>
+                        <span id="hudTeamACombo" class="hidden bg-amber-400 text-slate-950 font-black px-2.5 py-0.5 rounded-full text-sm md:text-lg animate-bounce shadow">🔥 0</span>
+                    </div>
+                    <div id="hudTeamAScore" class="font-display text-3xl md:text-5xl font-black text-white text-outline-heavy">0</div>
+                </div>
+                <div class="flex items-center justify-between mt-1 pt-1 border-t border-sky-400/30">
+                    <span class="text-xs md:text-base font-extrabold text-sky-200 flex items-center gap-1">🗺️ PETA:</span>
+                    <div id="hudTeamAMap" class="flex items-center gap-1.5 text-lg md:text-2xl tracking-widest font-black text-amber-300">
+                        <!-- Rendered via JS: ■ □ □ □ □ -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- CENTER ENVIRONMENT, MISSION BADGE & TEACHER BUTTON -->
+            <div class="col-span-2 md:col-span-4 flex flex-col items-center justify-center text-center">
+                <div class="flex items-center gap-2 flex-wrap justify-center">
+                    <div id="hudEnvBadge" class="hidden md:flex items-center gap-1.5 bg-amber-500/20 border-2 border-amber-400/70 text-amber-200 px-3 py-1 rounded-full text-base lg:text-lg font-extrabold">
+                        <span id="hudEnvIcon">🌳</span>
+                        <span id="hudEnvName">Hutan Misterius</span>
+                    </div>
+                    <div id="hudModeBadge" class="hidden xl:flex items-center gap-1 bg-slate-800 border-2 border-slate-500 text-slate-200 px-3 py-1 rounded-full text-sm font-bold">
+                        📷 Camera Mode
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-2 mt-1">
+                    <button onclick="openTeacherModal()" class="btn-3d-gold px-3 py-1.5 md:px-5 md:py-2 rounded-xl font-display font-bold text-sm md:text-xl flex items-center gap-1.5 cursor-pointer" title="Pengaturan Guru & Koreksi">
+                        <span>⚙️</span>
+                        <span class="hidden sm:inline">TEACHER MODE</span>
+                    </button>
+                    <button onclick="toggleSound()" id="soundToggleBtn" class="bg-slate-800 hover:bg-slate-700 border-2 border-slate-400 text-white p-2 md:px-3 md:py-2 rounded-xl font-bold text-lg md:text-xl transition" title="Suara Aktif/Mati">
+                        🔊
+                    </button>
+                </div>
+            </div>
+
+            <!-- TEAM B SCORE & MAP -->
+            <div class="col-span-5 md:col-span-4 bg-gradient-to-l from-rose-900/95 via-rose-800/90 to-rose-900/80 border-4 border-rose-400 rounded-2xl px-3 py-2 md:px-5 md:py-2.5 shadow-lg flex flex-col justify-between">
+                <div class="flex items-center justify-between gap-2">
+                    <div class="flex items-center gap-2 truncate">
+                        <span class="text-2xl md:text-3xl">🔴</span>
+                        <span id="hudTeamBName" class="font-display text-xl md:text-3xl font-bold text-rose-100 tracking-wide truncate text-outline-dark">TIM B</span>
+                        <span id="hudTeamBCombo" class="hidden bg-amber-400 text-slate-950 font-black px-2.5 py-0.5 rounded-full text-sm md:text-lg animate-bounce shadow">🔥 0</span>
+                    </div>
+                    <div id="hudTeamBScore" class="font-display text-3xl md:text-5xl font-black text-white text-outline-heavy">0</div>
+                </div>
+                <div class="flex items-center justify-between mt-1 pt-1 border-t border-rose-400/30">
+                    <span class="text-xs md:text-base font-extrabold text-rose-200 flex items-center gap-1">🗺️ PETA:</span>
+                    <div id="hudTeamBMap" class="flex items-center gap-1.5 text-lg md:text-2xl tracking-widest font-black text-amber-300">
+                        <!-- Rendered via JS: ■ □ □ □ □ -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- ========================================================= -->
+    <!-- MAIN STAGE CONTAINER (PROJECTOR FRIENDLY)                 -->
+    <!-- ========================================================= -->
+    <main class="relative z-20 flex-1 flex flex-col items-center justify-center w-full max-w-[1600px] mx-auto px-4 py-3 md:px-8 md:py-5">
+
+        <!-- ----------------------------------------------------- -->
+        <!-- SCREEN 1: HOME / WELCOME ADVENTURE SCREEN             -->
+        <!-- ----------------------------------------------------- -->
+        <section id="screenHome" class="w-full max-w-5xl card-3d-panel rounded-3xl p-6 md:p-10 text-center animate-pop">
+            <div class="inline-flex items-center gap-2 bg-amber-400/20 border-2 border-amber-400 text-amber-300 px-5 py-1.5 rounded-full font-extrabold text-lg md:text-xl mb-3">
+                <span>⭐ MATEMATIKA KELAS V SD</span>
+                <span>•</span>
+                <span>MEMBANDINGKAN BILANGAN DESIMAL</span>
+            </div>
+
+            <h1 class="font-display text-4xl sm:text-6xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-b from-yellow-200 via-amber-300 to-amber-500 drop-shadow-[0_6px_0_rgba(0,0,0,0.7)] tracking-tight leading-tight">
+                🏆 TEAM BATTLE CAMERA
+            </h1>
+            <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white text-outline-heavy mt-1 mb-6">
+                🗺️ Decimal Treasure Hunt 💎
+            </h2>
+
+            <!-- Concept Summary Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 text-left">
+                <div class="bg-sky-950/80 border-4 border-sky-400/70 rounded-2xl p-4 flex items-center gap-4">
+                    <div class="text-5xl">🔵🔴</div>
+                    <div>
+                        <div class="font-display text-xl font-bold text-sky-200">2 Tim Satu Kelas</div>
+                        <p class="text-sm md:text-base text-slate-200 font-bold">Seluruh siswa berdiskusi & mengangkat kartu secara bersamaan!</p>
+                    </div>
+                </div>
+                <div class="bg-amber-950/80 border-4 border-amber-400/70 rounded-2xl p-4 flex items-center gap-4">
+                    <div class="text-5xl font-display font-black text-amber-300 bg-white/10 px-3 py-1 rounded-xl">&lt; = &gt;</div>
+                    <div>
+                        <div class="font-display text-xl font-bold text-amber-200">3 Kartu Simbol</div>
+                        <p class="text-sm md:text-base text-slate-200 font-bold">Kamera menghitung kartu mayoritas di Zona Tim A & Zona Tim B.</p>
+                    </div>
+                </div>
+                <div class="bg-emerald-950/80 border-4 border-emerald-400/70 rounded-2xl p-4 flex items-center gap-4">
+                    <div class="text-5xl">🔒</div>
+                    <div>
+                        <div class="font-display text-xl font-bold text-emerald-200">100% Privasi Aman</div>
+                        <p class="text-sm md:text-base text-slate-200 font-bold">Tanpa deteksi wajah & tanpa rekam foto/video. Real-time scan!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-wrap items-center justify-center gap-4 md:gap-6">
+                <button onclick="goToCameraSetup()" class="btn-3d-gold px-8 py-4 md:px-10 md:py-5 rounded-2xl font-display text-2xl md:text-3xl font-black flex items-center gap-3 cursor-pointer">
+                    <span>📷 CAMERA SETUP & MULAI</span>
+                </button>
+                <button onclick="startWithManualMode()" class="btn-3d-emerald px-6 py-4 md:px-8 md:py-5 rounded-2xl font-display text-xl md:text-2xl font-bold text-white flex items-center gap-2 cursor-pointer">
+                    <span>✋ MULAI MANUAL MODE</span>
+                </button>
+                <button onclick="openPrintableCardsModal()" class="btn-3d-blue px-6 py-4 md:px-7 md:py-5 rounded-2xl font-display text-xl md:text-2xl font-bold text-white flex items-center gap-2 cursor-pointer">
+                    <span>🖨️ CETAK KARTU (&lt; = &gt;)</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- ----------------------------------------------------- -->
+        <!-- SCREEN 2: CAMERA SETUP (📷 CAMERA SETUP)              -->
+        <!-- ----------------------------------------------------- -->
+        <section id="screenCameraSetup" class="hidden w-full max-w-6xl card-3d-panel rounded-3xl p-5 md:p-8 animate-pop">
+            <div class="flex flex-wrap items-center justify-between gap-4 mb-4 pb-3 border-b-2 border-slate-700">
+                <div>
+                    <h2 class="font-display text-3xl md:text-5xl font-black text-amber-300 text-outline-dark flex items-center gap-3">
+                        <span>📷 CAMERA SETUP</span>
+                    </h2>
+                    <p class="text-base md:text-xl text-slate-200 font-bold">Atur posisi kamera dan batas Zona Tim A (Kiri) serta Zona Tim B (Kanan).</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button onclick="initCameraStream()" id="btnRequestCam" class="btn-3d-blue px-5 py-2.5 rounded-xl font-display text-lg md:text-xl font-bold text-white cursor-pointer">
+                        🎥 Aktifkan Kamera Browser
+                    </button>
+                    <button onclick="showScreen('screenHome')" class="bg-slate-700 hover:bg-slate-600 border-2 border-slate-400 px-4 py-2.5 rounded-xl font-bold text-base md:text-lg">
+                        ⬅ Kembali
+                    </button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                <!-- Instructions Column -->
+                <div class="lg:col-span-5 space-y-3">
+                    <div class="bg-slate-900/90 border-4 border-amber-400/70 rounded-2xl p-4 md:p-5">
+                        <h3 class="font-display text-xl md:text-2xl font-bold text-amber-300 mb-3 flex items-center gap-2">
+                            <span>📋 INSTRUKSI PERSIAPAN KELAS:</span>
+                        </h3>
+                        <ol class="space-y-2 text-base md:text-xl font-bold text-white list-decimal list-inside">
+                            <li class="p-1.5 rounded-lg bg-slate-800/80">Letakkan kamera menghadap seluruh kelas.</li>
+                            <li class="p-1.5 rounded-lg bg-sky-950/80 border-l-4 border-sky-400">Pastikan <span class="text-sky-300">Tim A</span> berada di sebelah kiri.</li>
+                            <li class="p-1.5 rounded-lg bg-rose-950/80 border-l-4 border-rose-400">Pastikan <span class="text-rose-300">Tim B</span> berada di sebelah kanan.</li>
+                            <li class="p-1.5 rounded-lg bg-slate-800/80">Pastikan kartu terlihat jelas.</li>
+                            <li class="p-1.5 rounded-lg bg-slate-800/80">Pastikan pencahayaan cukup.</li>
+                            <li class="p-1.5 rounded-lg bg-slate-800/80">Jangan menutupi kartu teman.</li>
+                        </ol>
+                    </div>
+
+                    <!-- Zone Adjustment Controls -->
+                    <div class="bg-slate-900/90 border-4 border-sky-400/50 rounded-2xl p-4 space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="font-display text-lg md:text-xl font-bold text-amber-200">↔️ Atur Batas Tengah Zona:</span>
+                            <span id="zoneSplitLabel" class="font-black text-lg bg-slate-800 px-3 py-0.5 rounded-lg text-amber-300">50% | 50%</span>
+                        </div>
+                        <input type="range" id="zoneSplitSlider" min="25" max="75" value="50" oninput="updateZoneSplit(this.value)" class="w-full h-4 bg-gradient-to-r from-sky-500 to-rose-500 rounded-lg appearance-none cursor-pointer">
+                        
+                        <div class="flex justify-between items-center pt-2">
+                            <span class="font-display text-base md:text-lg font-bold text-slate-200">↕️ Area Fokus Vertikal Kelas:</span>
+                            <span id="zoneMarginLabel" class="font-bold text-sm bg-slate-800 px-2.5 py-0.5 rounded-lg text-emerald-300">85% Tinggi</span>
+                        </div>
+                        <input type="range" id="zoneHeightSlider" min="50" max="95" value="85" oninput="updateZoneHeight(this.value)" class="w-full h-3 bg-slate-700 rounded-lg appearance-none cursor-pointer">
+
+                        <div class="flex items-center justify-between pt-1 text-xs md:text-sm text-slate-300">
+                            <label class="flex items-center gap-2 cursor-pointer font-bold">
+                                <input type="checkbox" id="mirrorCamCheck" checked onchange="toggleMirrorCamera(this.checked)" class="w-4 h-4 accent-amber-400">
+                                Cerminkan Kamera (Mirror Horizontal)
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Live Camera Split Zone Preview Column -->
+                <div class="lg:col-span-7 flex flex-col items-center">
+                    <div class="relative w-full aspect-video bg-slate-950 rounded-3xl overflow-hidden border-4 border-white/40 shadow-2xl">
+                        <!-- Live Video Element -->
+                        <video id="setupVideo" autoplay playsinline muted class="w-full h-full object-cover transform scale-x-[-1]"></video>
+                        
+                        <!-- Fallback Simulated Classroom Feed when Camera isn't active yet -->
+                        <canvas id="setupSimCanvas" class="absolute inset-0 w-full h-full object-cover"></canvas>
+
+                        <!-- Zone Overlay Container -->
+                        <div id="setupZoneOverlay" class="absolute inset-0 pointer-events-none flex items-center justify-center">
+                            <!-- Zone A Box -->
+                            <div id="setupZoneABox" class="h-[85%] border-4 border-dashed border-sky-400 bg-sky-500/20 rounded-l-2xl flex flex-col justify-between p-3 transition-all" style="width: 48%;">
+                                <div class="bg-sky-600/90 text-white font-display font-black text-lg md:text-2xl px-3 py-1 rounded-xl self-start shadow-lg border-2 border-sky-200">
+                                    🔵 [ ZONA <span class="teamANameText">TIM A</span> ]
+                                </div>
+                                <div class="text-sky-100 font-extrabold text-sm md:text-base bg-slate-950/70 px-3 py-1 rounded-lg self-center">
+                                    Area Baca Kartu Kiri
+                                </div>
+                            </div>
+
+                            <!-- Center Divider Line -->
+                            <div class="h-full w-2 bg-amber-400 shadow-[0_0_15px_#fbbf24] flex items-center justify-center relative">
+                                <div class="bg-amber-400 text-slate-950 font-black text-xs px-2 py-1 rounded-full shadow">BATAS</div>
+                            </div>
+
+                            <!-- Zone B Box -->
+                            <div id="setupZoneBBox" class="h-[85%] border-4 border-dashed border-rose-400 bg-rose-500/20 rounded-r-2xl flex flex-col justify-between p-3 transition-all" style="width: 48%;">
+                                <div class="bg-rose-600/90 text-white font-display font-black text-lg md:text-2xl px-3 py-1 rounded-xl self-end shadow-lg border-2 border-rose-200">
+                                    🔴 [ ZONA <span class="teamBNameText">TIM B</span> ]
+                                </div>
+                                <div class="text-rose-100 font-extrabold text-sm md:text-base bg-slate-950/70 px-3 py-1 rounded-lg self-center">
+                                    Area Baca Kartu Kanan
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Camera Status Badge -->
+                        <div id="setupCamStatusBadge" class="absolute bottom-3 left-3 bg-slate-900/90 border-2 border-amber-400 px-3 py-1 rounded-xl text-xs md:text-sm font-bold text-amber-300 flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping"></span>
+                            <span id="setupCamStatusText">Mode Simulasi Kelas Aktif (Klik "Aktifkan Kamera Browser" untuk webcam asli)</span>
+                        </div>
+                    </div>
+
+                    <!-- Save Zone & Start Buttons -->
+                    <div class="flex flex-wrap items-center justify-center gap-4 mt-5 w-full">
+                        <div class="w-full grid grid-cols-2 gap-3 bg-slate-900/90 border-2 border-slate-600 rounded-2xl p-3 text-left">
+                            <div class="flex items-center justify-between bg-sky-950/80 border border-sky-400/50 rounded-xl px-3 py-2">
+                                <span class="font-display text-sm md:text-base font-bold text-sky-200">🔵 Aktivitas &amp; Kartu <span class="teamANameText">TIM A</span>:</span>
+                                <span id="setupLiveTestA" class="font-display text-base md:text-lg font-black text-amber-300">Siap Diuji 👋</span>
+                            </div>
+                            <div class="flex items-center justify-between bg-rose-950/80 border border-rose-400/50 rounded-xl px-3 py-2">
+                                <span class="font-display text-sm md:text-base font-bold text-rose-200">🔴 Aktivitas &amp; Kartu <span class="teamBNameText">TIM B</span>:</span>
+                                <span id="setupLiveTestB" class="font-display text-base md:text-lg font-black text-amber-300">Siap Diuji 👋</span>
+                            </div>
+                        </div>
+                        <button onclick="saveZonesAndStartGame()" class="btn-3d-emerald px-8 py-4 rounded-2xl font-display text-2xl md:text-3xl font-black text-white flex items-center gap-3 cursor-pointer">
+                            <span>✓ SIMPAN ZONA &amp; MULAI MISI 1!</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ----------------------------------------------------- -->
+        <!-- SCREEN 3: ACTIVE GAMEPLAY (STAGES 1 TO 6)             -->
+        <!-- ----------------------------------------------------- -->
+        <section id="screenGameplay" class="hidden w-full max-w-6xl flex flex-col items-center justify-center">
+            
+            <!-- TOP MISSION PROGRESS BAR -->
+            <div class="w-full flex flex-wrap items-center justify-between gap-3 mb-3 px-2">
+                <div class="flex items-center gap-3">
+                    <div class="wood-panel px-5 py-2 rounded-2xl flex items-center gap-2">
+                        <span class="text-2xl md:text-3xl">🗺️</span>
+                        <span id="missionBadgeText" class="font-display text-2xl md:text-4xl font-black text-amber-300 tracking-wide">MISI 1/15</span>
+                    </div>
+                    <div id="stageEnvPill" class="bg-slate-900/85 border-2 border-white/30 px-4 py-2 rounded-2xl font-display text-xl md:text-2xl font-bold text-white flex items-center gap-2">
+                        <span id="stageEnvIcon">🌳</span>
+                        <span id="stageEnvTitle">Hutan Misterius</span>
+                    </div>
+                </div>
+
+                <!-- 15-Dot Mission Progress Track -->
+                <div id="missionDotsTrack" class="hidden lg:flex items-center gap-1.5 bg-slate-950/75 px-4 py-2 rounded-2xl border-2 border-slate-600">
+                    <!-- Populated via JS -->
+                </div>
+            </div>
+
+            <!-- ================================================= -->
+            <!-- STAGE 1, 2, 3: QUESTION + DISCUSSION + COUNTDOWN  -->
+            <!-- ================================================= -->
+            <div id="stageQuestionCard" class="w-full card-3d-panel rounded-3xl p-6 md:p-10 text-center relative overflow-hidden">
+                
+                <!-- Stage Status Banner -->
+                <div id="phaseStatusBanner" class="inline-flex items-center gap-2 bg-sky-500/20 border-2 border-sky-300 text-sky-200 px-6 py-2 rounded-full font-display text-xl md:text-3xl font-bold mb-4">
+                    <span>🗣️ WAKTU DISKUSI TIM!</span>
+                </div>
+
+                <!-- Giant Decimal Comparison Display (Projector Optimized) -->
+                <div class="my-3 md:my-6 py-6 md:py-10 px-4 bg-slate-950/90 border-4 border-amber-400/80 rounded-3xl shadow-inner flex items-center justify-center gap-4 sm:gap-8 md:gap-14">
+                    <span id="qLeftNum" class="font-display text-6xl sm:text-8xl md:text-9xl font-black text-white text-outline-heavy tracking-tight">0,5</span>
+                    
+                    <div id="qMiddleSlot" class="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-3xl bg-amber-400/20 border-4 border-dashed border-amber-400 flex items-center justify-center font-display text-5xl sm:text-7xl md:text-8xl font-black text-amber-300 animate-pulse-scale">
+                        ___
+                    </div>
+
+                    <span id="qRightNum" class="font-display text-6xl sm:text-8xl md:text-9xl font-black text-white text-outline-heavy tracking-tight">0,8</span>
+                </div>
+
+                <!-- Visual Choices Reference (<   =   >) + Live Classroom Activity Monitor -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-center my-4">
+                    <!-- Cards Reference -->
+                    <div class="lg:col-span-7 flex items-center justify-center gap-4 sm:gap-8">
+                        <div class="bg-white text-slate-950 w-20 h-24 sm:w-28 sm:h-32 rounded-2xl border-4 border-slate-400 shadow-xl flex flex-col items-center justify-center transform -rotate-3">
+                            <span class="font-display text-5xl sm:text-7xl font-black leading-none">&lt;</span>
+                            <span class="text-xs sm:text-sm font-black text-slate-600 mt-1">LEBIH KECIL</span>
+                        </div>
+                        <div class="bg-white text-slate-950 w-20 h-24 sm:w-28 sm:h-32 rounded-2xl border-4 border-slate-400 shadow-xl flex flex-col items-center justify-center">
+                            <span class="font-display text-5xl sm:text-7xl font-black leading-none">=</span>
+                            <span class="text-xs sm:text-sm font-black text-slate-600 mt-1">SAMA DENGAN</span>
+                        </div>
+                        <div class="bg-white text-slate-950 w-20 h-24 sm:w-28 sm:h-32 rounded-2xl border-4 border-slate-400 shadow-xl flex flex-col items-center justify-center transform rotate-3">
+                            <span class="font-display text-5xl sm:text-7xl font-black leading-none">&gt;</span>
+                            <span class="text-xs sm:text-sm font-black text-slate-600 mt-1">LEBIH BESAR</span>
+                        </div>
+                    </div>
+
+                    <!-- Live Camera Team Activity & Readiness Monitor (Makes Students Active During Discussion) -->
+                    <div id="liveDiscussionCamBox" class="lg:col-span-5 bg-slate-950/90 border-4 border-amber-400/80 rounded-2xl p-3 flex flex-col gap-2 shadow-xl">
+                        <div class="flex items-center justify-between text-xs md:text-sm font-extrabold text-amber-300">
+                            <span class="flex items-center gap-1.5">
+                                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+                                📷 MONITOR KEAKTIFAN KELAS (LIVE)
+                            </span>
+                            <span id="discussionCamBadge" class="bg-slate-800 px-2 py-0.5 rounded text-slate-200">Ayo Diskusi!</span>
+                        </div>
+                        <div class="relative w-full aspect-[16/7] bg-slate-900 rounded-xl overflow-hidden border-2 border-white/30">
+                            <video id="discussionLiveVideo" autoplay playsinline muted class="w-full h-full object-cover transform scale-x-[-1]"></video>
+                            <canvas id="discussionActivityCanvas" class="absolute inset-0 w-full h-full object-cover"></canvas>
+                            <div class="absolute inset-0 pointer-events-none flex">
+                                <div class="w-1/2 h-full border-r-2 border-amber-400 bg-sky-500/10 flex flex-col justify-between p-1.5">
+                                    <span class="bg-sky-600/90 text-white text-[11px] font-black px-2 py-0.5 rounded self-start">🔵 ZONA TIM A</span>
+                                    <div class="w-full bg-slate-950/80 rounded-full h-3 p-0.5 border border-sky-400">
+                                        <div id="activityBarA" class="bg-gradient-to-r from-sky-400 to-emerald-400 h-full rounded-full transition-all duration-200" style="width: 35%;"></div>
+                                    </div>
+                                </div>
+                                <div class="w-1/2 h-full bg-rose-500/10 flex flex-col justify-between p-1.5">
+                                    <span class="bg-rose-600/90 text-white text-[11px] font-black px-2 py-0.5 rounded self-end">🔴 ZONA TIM B</span>
+                                    <div class="w-full bg-slate-950/80 rounded-full h-3 p-0.5 border border-rose-400">
+                                        <div id="activityBarB" class="bg-gradient-to-r from-rose-400 to-amber-400 h-full rounded-full transition-all duration-200" style="width: 35%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between text-xs font-extrabold px-1">
+                            <span id="activityTextA" class="text-sky-300">🔵 Semangat Tim A: Aktif!</span>
+                            <span id="activityTextB" class="text-rose-300">🔴 Semangat Tim B: Aktif!</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Giant Discussion Timer & Countdown Display -->
+                <div id="timerSection" class="mt-4 flex flex-col items-center">
+                    <div class="flex items-center gap-4">
+                        <div id="bigTimerCircle" class="w-24 h-24 md:w-32 md:h-32 rounded-full bg-gradient-to-b from-amber-400 to-amber-600 border-8 border-yellow-100 shadow-2xl flex items-center justify-center font-display text-5xl md:text-6xl font-black text-slate-950">
+                            10
+                        </div>
+                    </div>
+                    <!-- Progress Bar -->
+                    <div class="w-full max-w-2xl h-5 bg-slate-800 rounded-full overflow-hidden border-2 border-slate-600 mt-3">
+                        <div id="discussionProgressBar" class="h-full bg-gradient-to-r from-emerald-400 via-amber-400 to-rose-500 transition-all duration-300" style="width: 100%;"></div>
+                    </div>
+
+                    <!-- Teacher Quick Skip/Action Row -->
+                    <div class="flex flex-wrap items-center justify-center gap-3 mt-4">
+                        <button onclick="skipToHoldCardsNow()" class="btn-3d-gold px-6 py-2.5 rounded-xl font-display text-lg md:text-xl font-bold cursor-pointer">
+                            📷 Langsung Angkat Kartu &amp; Scan Kamera
+                        </button>
+                        <button onclick="switchToManualInputNow()" class="bg-slate-800 hover:bg-slate-700 border-2 border-slate-400 px-5 py-2.5 rounded-xl font-bold text-base md:text-lg cursor-pointer">
+                            ✋ Input Manual Guru
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ANGKAT! OVERLAY BANNER WITH LIVE CAMERA PREVIEW (Stage 3 Peak) -->
+                <div id="angkatOverlay" class="hidden absolute inset-0 bg-gradient-to-b from-amber-500/95 to-orange-600/95 z-30 flex flex-col items-center justify-center p-4 text-center animate-pop">
+                    <div id="countdown321Text" class="font-display text-[90px] md:text-[130px] font-black text-white text-outline-heavy leading-none">
+                        🙌 ANGKAT!
+                    </div>
+                    <p id="countdownSubText" class="font-display text-2xl md:text-4xl font-bold text-yellow-100 text-outline-dark mt-2 mb-3">
+                        Angkat Kartu Jawaban (&lt; , = , &gt;) Tinggi-Tinggi Ke Arah Kamera!
+                    </p>
+                    <!-- Live Camera Mirror inside Countdown so Students See Themselves Raising Cards -->
+                    <div class="relative w-full max-w-2xl aspect-[16/7] bg-slate-950 rounded-2xl overflow-hidden border-4 border-white shadow-2xl">
+                        <video id="countdownLiveVideo" autoplay playsinline muted class="w-full h-full object-cover transform scale-x-[-1]"></video>
+                        <div class="absolute inset-0 flex pointer-events-none">
+                            <div class="w-1/2 h-full border-r-4 border-amber-400 flex items-end justify-start p-3 bg-sky-500/15">
+                                <span class="bg-sky-600 text-white font-display font-black text-lg md:text-2xl px-3 py-1 rounded-xl shadow">🔵 ZONA TIM A: ANGKAT KARTU!</span>
+                            </div>
+                            <div class="w-1/2 h-full flex items-end justify-end p-3 bg-rose-500/15">
+                                <span class="bg-rose-600 text-white font-display font-black text-lg md:text-2xl px-3 py-1 rounded-xl shadow">🔴 ZONA TIM B: ANGKAT KARTU!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================================================= -->
+            <!-- STAGE 4: CAMERA SCAN (📷 MEMBACA JAWABAN...)      -->
+            <!-- ================================================= -->
+            <div id="stageCameraScan" class="hidden w-full card-3d-panel rounded-3xl p-5 md:p-8 text-center animate-pop">
+                <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                    <div class="flex items-center gap-3">
+                        <span class="text-4xl animate-bounce">📷</span>
+                        <div class="text-left">
+                            <h3 class="font-display text-3xl md:text-4xl font-black text-amber-300 text-outline-dark">
+                                MEMBACA JAWABAN...
+                            </h3>
+                            <p class="text-base md:text-lg text-slate-200 font-bold">Pertahankan posisi kartu menghadap kamera!</p>
+                        </div>
+                    </div>
+                    <!-- Question Reminder Pill -->
+                    <div class="bg-slate-900 border-4 border-amber-400 px-6 py-2 rounded-2xl font-display text-3xl md:text-4xl font-black text-white">
+                        <span id="scanQReminder">0,5 ___ 0,8</span>
+                    </div>
+                </div>
+
+                <!-- Dual-Zone Camera Scan Viewport -->
+                <div class="relative w-full max-w-5xl mx-auto aspect-video bg-slate-950 rounded-3xl overflow-hidden border-4 border-amber-400 shadow-2xl">
+                    <video id="scanVideo" autoplay playsinline muted class="w-full h-full object-cover transform scale-x-[-1]"></video>
+                    <canvas id="scanAnalysisCanvas" class="absolute inset-0 w-full h-full object-cover"></canvas>
+                    
+                    <!-- Laser Scan Line -->
+                    <div class="laser-line"></div>
+
+                    <!-- Zone Split Overlay during Scan -->
+                    <div class="absolute inset-0 pointer-events-none flex items-center justify-center">
+                        <!-- Zone A -->
+                        <div id="scanZoneADiv" class="h-[85%] border-4 border-sky-400 bg-sky-500/15 rounded-l-2xl flex flex-col justify-between p-4" style="width: 48%;">
+                            <div class="flex items-center justify-between flex-wrap gap-1">
+                                <span class="bg-sky-600 text-white font-display font-black text-xl md:text-3xl px-4 py-1.5 rounded-xl shadow-lg border-2 border-sky-200">
+                                    🔵 ZONA <span class="teamANameText">TIM A</span>
+                                </span>
+                                <span id="liveCountBadgeA" class="bg-slate-950/90 text-sky-300 font-display text-xl md:text-2xl font-black px-4 py-1.5 rounded-xl border-2 border-sky-400">
+                                    Kartu Terbaca: 0
+                                </span>
+                            </div>
+                            <div class="space-y-1.5">
+                                <div id="scanActivityStatusA" class="bg-sky-950/90 text-emerald-300 font-extrabold text-sm md:text-base px-3 py-1 rounded-lg border border-sky-400/50 inline-block">
+                                    🔥 Keaktifan Tim A: Membaca gerakan &amp; kartu...
+                                </div>
+                                <div id="liveBreakdownA" class="bg-slate-950/85 border-2 border-sky-400/60 rounded-xl p-2 flex justify-around text-lg md:text-2xl font-black text-white">
+                                    <span>&lt; : 0</span>
+                                    <span>= : 0</span>
+                                    <span>&gt; : 0</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Divider -->
+                        <div class="h-full w-2 bg-amber-400 shadow-[0_0_20px_#fbbf24]"></div>
+
+                        <!-- Zone B -->
+                        <div id="scanZoneBDiv" class="h-[85%] border-4 border-rose-400 bg-rose-500/15 rounded-r-2xl flex flex-col justify-between p-4" style="width: 48%;">
+                            <div class="flex items-center justify-between flex-wrap gap-1">
+                                <span id="liveCountBadgeB" class="bg-slate-950/90 text-rose-300 font-display text-xl md:text-2xl font-black px-4 py-1.5 rounded-xl border-2 border-rose-400">
+                                    Kartu Terbaca: 0
+                                </span>
+                                <span class="bg-rose-600 text-white font-display font-black text-xl md:text-3xl px-4 py-1.5 rounded-xl shadow-lg border-2 border-rose-200">
+                                    🔴 ZONA <span class="teamBNameText">TIM B</span>
+                                </span>
+                            </div>
+                            <div class="space-y-1.5">
+                                <div id="scanActivityStatusB" class="bg-rose-950/90 text-emerald-300 font-extrabold text-sm md:text-base px-3 py-1 rounded-lg border border-rose-400/50 inline-block">
+                                    🔥 Keaktifan Tim B: Membaca gerakan &amp; kartu...
+                                </div>
+                                <div id="liveBreakdownB" class="bg-slate-950/85 border-2 border-rose-400/60 rounded-xl p-2 flex justify-around text-lg md:text-2xl font-black text-white">
+                                    <span>&lt; : 0</span>
+                                    <span>= : 0</span>
+                                    <span>&gt; : 0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scan Progress Bar & Interactive Sim Trigger for Testing -->
+                <div class="w-full max-w-4xl mx-auto mt-4 flex flex-col gap-2">
+                    <div class="h-5 bg-slate-800 rounded-full overflow-hidden border-2 border-amber-400">
+                        <div id="scanProgressBar" class="h-full bg-gradient-to-r from-sky-400 via-amber-400 to-rose-500 transition-all duration-150" style="width: 0%;"></div>
+                    </div>
+                    <div class="flex flex-wrap items-center justify-center gap-2 text-xs md:text-sm text-slate-300 font-bold">
+                        <span>💡 Tips Aktif: Siswa mengangkat kartu putih (&lt; , = , &gt;) setinggi dada/kepala di dalam zona tim masing-masing!</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================================================= -->
+            <!-- STAGE 4B: MANUAL MODE INPUT SCREEN                -->
+            <!-- ================================================= -->
+            <div id="stageManualModeInput" class="hidden w-full card-3d-panel rounded-3xl p-6 md:p-10 text-center animate-pop">
+                <div class="inline-flex items-center gap-2 bg-amber-400/20 border-2 border-amber-400 text-amber-300 px-5 py-1.5 rounded-full font-display text-xl md:text-2xl font-bold mb-2">
+                    <span>✋ MANUAL MODE — GURU MEMILIH JAWABAN MAYORITAS TIM</span>
+                </div>
+
+                <div class="my-3 py-4 px-6 bg-slate-950/90 border-4 border-amber-400 rounded-2xl inline-block">
+                    <span id="manualQDisplay" class="font-display text-5xl md:text-7xl font-black text-white text-outline-heavy">0,5 ___ 0,8</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
+                    <!-- Team A Manual Selector -->
+                    <div class="bg-sky-950/90 border-4 border-sky-400 rounded-3xl p-6">
+                        <h3 class="font-display text-3xl md:text-4xl font-black text-sky-200 mb-4">
+                            🔵 <span class="teamANameText">TIM A</span>
+                        </h3>
+                        <p class="text-slate-200 font-bold mb-4 text-lg">Pilih simbol kartu mayoritas Tim A:</p>
+                        <div class="grid grid-cols-3 gap-4">
+                            <button onclick="selectManualAnswer('A', '<')" id="btnManA_<" class="manual-opt-A bg-white hover:bg-sky-100 text-slate-950 font-display text-5xl md:text-7xl font-black py-6 rounded-2xl border-4 border-slate-400 shadow-xl transition cursor-pointer">&lt;</button>
+                            <button onclick="selectManualAnswer('A', '=')" id="btnManA_=" class="manual-opt-A bg-white hover:bg-sky-100 text-slate-950 font-display text-5xl md:text-7xl font-black py-6 rounded-2xl border-4 border-slate-400 shadow-xl transition cursor-pointer">=</button>
+                            <button onclick="selectManualAnswer('A', '>')" id="btnManA_>" class="manual-opt-A bg-white hover:bg-sky-100 text-slate-950 font-display text-5xl md:text-7xl font-black py-6 rounded-2xl border-4 border-slate-400 shadow-xl transition cursor-pointer">&gt;</button>
+                        </div>
+                        <div id="manSelectedLabelA" class="mt-4 font-display text-2xl font-bold text-amber-300">Belum dipilih</div>
+                    </div>
+
+                    <!-- Team B Manual Selector -->
+                    <div class="bg-rose-950/90 border-4 border-rose-400 rounded-3xl p-6">
+                        <h3 class="font-display text-3xl md:text-4xl font-black text-rose-200 mb-4">
+                            🔴 <span class="teamBNameText">TIM B</span>
+                        </h3>
+                        <p class="text-slate-200 font-bold mb-4 text-lg">Pilih simbol kartu mayoritas Tim B:</p>
+                        <div class="grid grid-cols-3 gap-4">
+                            <button onclick="selectManualAnswer('B', '<')" id="btnManB_<" class="manual-opt-B bg-white hover:bg-rose-100 text-slate-950 font-display text-5xl md:text-7xl font-black py-6 rounded-2xl border-4 border-slate-400 shadow-xl transition cursor-pointer">&lt;</button>
+                            <button onclick="selectManualAnswer('B', '=')" id="btnManB_=" class="manual-opt-B bg-white hover:bg-rose-100 text-slate-950 font-display text-5xl md:text-7xl font-black py-6 rounded-2xl border-4 border-slate-400 shadow-xl transition cursor-pointer">=</button>
+                            <button onclick="selectManualAnswer('B', '>')" id="btnManB_>" class="manual-opt-B bg-white hover:bg-rose-100 text-slate-950 font-display text-5xl md:text-7xl font-black py-6 rounded-2xl border-4 border-slate-400 shadow-xl transition cursor-pointer">&gt;</button>
+                        </div>
+                        <div id="manSelectedLabelB" class="mt-4 font-display text-2xl font-bold text-amber-300">Belum dipilih</div>
+                    </div>
+                </div>
+
+                <button onclick="confirmManualModeChoices()" id="btnConfirmManualChoices" class="btn-3d-emerald px-10 py-4 rounded-2xl font-display text-2xl md:text-4xl font-black text-white cursor-pointer opacity-50 pointer-events-none">
+                    ✅ KONFIRMASI JAWABAN TIM
+                </button>
+            </div>
+
+            <!-- ================================================= -->
+            <!-- STAGE 5: HASIL CAMERA SCAN & MANUAL CORRECTION    -->
+            <!-- ================================================= -->
+            <div id="stageScanResult" class="hidden w-full card-3d-panel rounded-3xl p-5 md:p-8 text-center animate-pop">
+                <div class="flex flex-wrap items-center justify-between gap-3 mb-4 pb-3 border-b-2 border-slate-700">
+                    <div class="flex items-center gap-3">
+                        <span class="text-4xl">📷</span>
+                        <h3 class="font-display text-3xl md:text-5xl font-black text-amber-300 text-outline-dark">
+                            HASIL PEMBACAAN KAMERA
+                        </h3>
+                    </div>
+
+                    <!-- Accuracy Limitation Warning Badge (Requirement 6) -->
+                    <div class="bg-amber-500/20 border-2 border-amber-400 text-amber-200 px-4 py-1.5 rounded-xl font-bold text-sm md:text-lg flex items-center gap-2">
+                        <span>⚠️ Beberapa kartu tidak terbaca (tertutup/miring/jauh). Guru dapat melakukan koreksi.</span>
+                    </div>
+                </div>
+
+                <!-- Team A & Team B Readout Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-4">
+                    
+                    <!-- TEAM A SCAN RESULT -->
+                    <div class="bg-sky-950/90 border-4 border-sky-400 rounded-3xl p-5 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="font-display text-2xl md:text-4xl font-black text-sky-200">🔵 <span class="teamANameText">TIM A</span></span>
+                                <span id="scanTotalCardsA" class="bg-sky-800 text-sky-100 px-3 py-1 rounded-lg font-bold text-base">Total: 21 kartu</span>
+                            </div>
+
+                            <!-- Symbol Count Breakdown -->
+                            <div class="grid grid-cols-3 gap-3 my-3">
+                                <div class="bg-slate-900/90 border-2 border-sky-400/50 rounded-2xl p-3">
+                                    <div class="font-display text-4xl md:text-5xl font-black text-white">&lt;</div>
+                                    <div id="countA_lt" class="font-display text-2xl md:text-3xl font-bold text-sky-300 mt-1">→ 18</div>
+                                </div>
+                                <div class="bg-slate-900/90 border-2 border-sky-400/50 rounded-2xl p-3">
+                                    <div class="font-display text-4xl md:text-5xl font-black text-white">=</div>
+                                    <div id="countA_eq" class="font-display text-2xl md:text-3xl font-bold text-sky-300 mt-1">→ 2</div>
+                                </div>
+                                <div class="bg-slate-900/90 border-2 border-sky-400/50 rounded-2xl p-3">
+                                    <div class="font-display text-4xl md:text-5xl font-black text-white">&gt;</div>
+                                    <div id="countA_gt" class="font-display text-2xl md:text-3xl font-bold text-sky-300 mt-1">→ 1</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Majority Decision or Tie Warning for Team A -->
+                        <div id="decisionBoxA" class="mt-3 p-4 rounded-2xl bg-sky-900/90 border-2 border-sky-300">
+                            <div id="majorityNormalA">
+                                <span class="text-lg md:text-2xl font-bold text-sky-100">Jawaban <span class="teamANameText">Tim A</span>:</span>
+                                <span id="finalAnsDisplayA" class="font-display text-5xl md:text-6xl font-black text-amber-300 ml-3 align-middle">&lt;</span>
+                            </div>
+                            <!-- Tie Box (Requirement 8: Jika Jumlah Kartu Sama) -->
+                            <div id="tieBoxA" class="hidden space-y-2">
+                                <div class="text-amber-300 font-display text-xl md:text-2xl font-black">⚠️ HASIL TIDAK MENENTUKAN</div>
+                                <p class="text-sm md:text-base text-white font-bold">“Guru menentukan jawaban tim.”</p>
+                                <div class="flex justify-center gap-3 pt-1">
+                                    <button onclick="applyManualOverride('A', '<')" class="bg-white text-slate-950 hover:bg-amber-300 font-display text-3xl font-black px-5 py-2 rounded-xl border-2 border-slate-700 cursor-pointer">&lt;</button>
+                                    <button onclick="applyManualOverride('A', '=')" class="bg-white text-slate-950 hover:bg-amber-300 font-display text-3xl font-black px-5 py-2 rounded-xl border-2 border-slate-700 cursor-pointer">=</button>
+                                    <button onclick="applyManualOverride('A', '>')" class="bg-white text-slate-950 hover:bg-amber-300 font-display text-3xl font-black px-5 py-2 rounded-xl border-2 border-slate-700 cursor-pointer">&gt;</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TEAM B SCAN RESULT -->
+                    <div class="bg-rose-950/90 border-4 border-rose-400 rounded-3xl p-5 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="font-display text-2xl md:text-4xl font-black text-rose-200">🔴 <span class="teamBNameText">TIM B</span></span>
+                                <span id="scanTotalCardsB" class="bg-rose-800 text-rose-100 px-3 py-1 rounded-lg font-bold text-base">Total: 22 kartu</span>
+                            </div>
+
+                            <!-- Symbol Count Breakdown -->
+                            <div class="grid grid-cols-3 gap-3 my-3">
+                                <div class="bg-slate-900/90 border-2 border-rose-400/50 rounded-2xl p-3">
+                                    <div class="font-display text-4xl md:text-5xl font-black text-white">&lt;</div>
+                                    <div id="countB_lt" class="font-display text-2xl md:text-3xl font-bold text-rose-300 mt-1">→ 5</div>
+                                </div>
+                                <div class="bg-slate-900/90 border-2 border-rose-400/50 rounded-2xl p-3">
+                                    <div class="font-display text-4xl md:text-5xl font-black text-white">=</div>
+                                    <div id="countB_eq" class="font-display text-2xl md:text-3xl font-bold text-rose-300 mt-1">→ 3</div>
+                                </div>
+                                <div class="bg-slate-900/90 border-2 border-rose-400/50 rounded-2xl p-3">
+                                    <div class="font-display text-4xl md:text-5xl font-black text-white">&gt;</div>
+                                    <div id="countB_gt" class="font-display text-2xl md:text-3xl font-bold text-rose-300 mt-1">→ 14</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Majority Decision or Tie Warning for Team B -->
+                        <div id="decisionBoxB" class="mt-3 p-4 rounded-2xl bg-rose-900/90 border-2 border-rose-300">
+                            <div id="majorityNormalB">
+                                <span class="text-lg md:text-2xl font-bold text-rose-100">Jawaban <span class="teamBNameText">Tim B</span>:</span>
+                                <span id="finalAnsDisplayB" class="font-display text-5xl md:text-6xl font-black text-amber-300 ml-3 align-middle">&gt;</span>
+                            </div>
+                            <!-- Tie Box (Requirement 8) -->
+                            <div id="tieBoxB" class="hidden space-y-2">
+                                <div class="text-amber-300 font-display text-xl md:text-2xl font-black">⚠️ HASIL TIDAK MENENTUKAN</div>
+                                <p class="text-sm md:text-base text-white font-bold">“Guru menentukan jawaban tim.”</p>
+                                <div class="flex justify-center gap-3 pt-1">
+                                    <button onclick="applyManualOverride('B', '<')" class="bg-white text-slate-950 hover:bg-amber-300 font-display text-3xl font-black px-5 py-2 rounded-xl border-2 border-slate-700 cursor-pointer">&lt;</button>
+                                    <button onclick="applyManualOverride('B', '=')" class="bg-white text-slate-950 hover:bg-amber-300 font-display text-3xl font-black px-5 py-2 rounded-xl border-2 border-slate-700 cursor-pointer">=</button>
+                                    <button onclick="applyManualOverride('B', '>')" class="bg-white text-slate-950 hover:bg-amber-300 font-display text-3xl font-black px-5 py-2 rounded-xl border-2 border-slate-700 cursor-pointer">&gt;</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- INLINE MANUAL CORRECTION DRAWER (Requirement 7: ✋ KOREKSI MANUAL) -->
+                <div id="manualCorrectionDrawer" class="hidden bg-slate-900/95 border-4 border-amber-400 rounded-2xl p-4 my-4 animate-pop">
+                    <div class="font-display text-xl md:text-2xl font-bold text-amber-300 mb-3">
+                        ✋ KOREKSI MANUAL GURU — Klik untuk mengubah jawaban tim:
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="flex items-center justify-center gap-3 bg-sky-950 p-3 rounded-xl border-2 border-sky-400">
+                            <span class="font-display text-xl font-bold text-sky-200">🔵 <span class="teamANameText">Tim A</span> →</span>
+                            <button onclick="applyManualOverride('A', '<')" class="corr-btn-A bg-white text-slate-950 font-display text-3xl font-black px-5 py-2 rounded-xl border-4 border-transparent cursor-pointer">&lt;</button>
+                            <button onclick="applyManualOverride('A', '=')" class="corr-btn-A bg-white text-slate-950 font-display text-3xl font-black px-5 py-2 rounded-xl border-4 border-transparent cursor-pointer">=</button>
+                            <button onclick="applyManualOverride('A', '>')" class="corr-btn-A bg-white text-slate-950 font-display text-3xl font-black px-5 py-2 rounded-xl border-4 border-transparent cursor-pointer">&gt;</button>
+                        </div>
+                        <div class="flex items-center justify-center gap-3 bg-rose-950 p-3 rounded-xl border-2 border-rose-400">
+                            <span class="font-display text-xl font-bold text-rose-200">🔴 <span class="teamBNameText">Tim B</span> →</span>
+                            <button onclick="applyManualOverride('B', '<')" class="corr-btn-B bg-white text-slate-950 font-display text-3xl font-black px-5 py-2 rounded-xl border-4 border-transparent cursor-pointer">&lt;</button>
+                            <button onclick="applyManualOverride('B', '=')" class="corr-btn-B bg-white text-slate-950 font-display text-3xl font-black px-5 py-2 rounded-xl border-4 border-transparent cursor-pointer">=</button>
+                            <button onclick="applyManualOverride('B', '>')" class="corr-btn-B bg-white text-slate-950 font-display text-3xl font-black px-5 py-2 rounded-xl border-4 border-transparent cursor-pointer">&gt;</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons: Koreksi Manual, Ulangi Scan, Simulasi Seri, Konfirmasi Hasil -->
+                <div class="flex flex-wrap items-center justify-center gap-4 mt-5">
+                    <button onclick="toggleManualCorrectionDrawer()" class="btn-3d-gold px-6 py-3.5 rounded-2xl font-display text-xl md:text-2xl font-black flex items-center gap-2 cursor-pointer">
+                        <span>✋ KOREKSI MANUAL</span>
+                    </button>
+                    <button onclick="rescanCameraNow()" class="btn-3d-blue px-5 py-3.5 rounded-2xl font-display text-lg md:text-xl font-bold text-white flex items-center gap-2 cursor-pointer">
+                        <span>🔄 BACA ULANG KAMERA</span>
+                    </button>
+                    <button onclick="proceedToQuestionEvaluation()" id="btnProceedEvaluation" class="btn-3d-emerald px-8 py-4 rounded-2xl font-display text-2xl md:text-3xl font-black text-white flex items-center gap-2 cursor-pointer">
+                        <span>✅ KONFIRMASI &amp; LIHAT JAWABAN BENAR!</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- ================================================= -->
+            <!-- STAGE 6: QUESTION EVALUATION & EXPLANATION        -->
+            <!-- ================================================= -->
+            <div id="stageQuestionResult" class="hidden w-full card-3d-panel rounded-3xl p-6 md:p-9 text-center animate-pop">
+                
+                <!-- Correct Answer Reveal -->
+                <div class="inline-block bg-emerald-950/90 border-4 border-emerald-400 rounded-3xl px-8 py-4 mb-4 shadow-2xl">
+                    <div class="text-emerald-300 font-display text-xl md:text-2xl font-bold uppercase tracking-wider">JAWABAN BENAR:</div>
+                    <div class="flex items-center justify-center gap-5 mt-1">
+                        <span id="evalLeftNum" class="font-display text-5xl md:text-7xl font-black text-white">0,5</span>
+                        <span id="evalCorrectSymbol" class="bg-amber-400 text-slate-950 font-display text-5xl md:text-7xl font-black px-6 py-1 rounded-2xl border-4 border-white shadow-lg">&lt;</span>
+                        <span id="evalRightNum" class="font-display text-5xl md:text-7xl font-black text-white">0,8</span>
+                    </div>
+                </div>
+
+                <!-- Short Explanation (Requirement 11) -->
+                <div id="evalExplanationBox" class="max-w-3xl mx-auto bg-slate-900/90 border-2 border-amber-400/70 rounded-2xl px-6 py-3 mb-5 text-xl md:text-3xl font-extrabold text-amber-200">
+                    0,5 lebih kecil dari 0,8, sehingga tanda yang benar adalah &lt;.
+                </div>
+
+                <!-- Both Teams Summary Banner -->
+                <div id="evalSummaryBanner" class="font-display text-2xl md:text-4xl font-black text-white text-outline-dark mb-4">
+                    <!-- e.g., 🔵 +10 | 🔴 +10 or ❌ Kedua tim belum berhasil. -->
+                </div>
+
+                <!-- Team A & Team B Outcome Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <!-- Team A Outcome -->
+                    <div id="evalCardA" class="bg-sky-950/90 border-4 border-sky-400 rounded-3xl p-5 flex flex-col items-center justify-center space-y-2">
+                        <div class="text-xl font-bold text-sky-200">Jawaban 🔵 <span class="teamANameText">TIM A</span>: <span id="evalChosenA" class="font-display text-3xl text-white font-black">&lt;</span></div>
+                        <div id="evalOutcomeTextA" class="font-display text-3xl md:text-4xl font-black text-emerald-300 text-outline-dark">
+                            🔵 TIM A +10 POIN! 🎉
+                        </div>
+                        <div id="evalComboAlertA" class="hidden bg-gradient-to-r from-amber-400 to-orange-500 text-slate-950 font-display text-xl md:text-2xl font-black px-5 py-1.5 rounded-full animate-bounce shadow-lg">
+                            🔥 3 COMBO! +5 BONUS
+                        </div>
+                        <div id="evalMapAlertA" class="hidden bg-indigo-900/90 border-2 border-amber-300 text-amber-300 font-display text-lg md:text-xl font-bold px-4 py-1.5 rounded-xl">
+                            🎉 TIM A MENEMUKAN POTONGAN PETA!
+                        </div>
+                    </div>
+
+                    <!-- Team B Outcome -->
+                    <div id="evalCardB" class="bg-rose-950/90 border-4 border-rose-400 rounded-3xl p-5 flex flex-col items-center justify-center space-y-2">
+                        <div class="text-xl font-bold text-rose-200">Jawaban 🔴 <span class="teamBNameText">TIM B</span>: <span id="evalChosenB" class="font-display text-3xl text-white font-black">&gt;</span></div>
+                        <div id="evalOutcomeTextB" class="font-display text-3xl md:text-4xl font-black text-rose-300 text-outline-dark">
+                            🔴 TIM B BELUM BERHASIL
+                        </div>
+                        <div id="evalComboAlertB" class="hidden bg-gradient-to-r from-amber-400 to-orange-500 text-slate-950 font-display text-xl md:text-2xl font-black px-5 py-1.5 rounded-full animate-bounce shadow-lg">
+                            🔥 3 COMBO! +5 BONUS
+                        </div>
+                        <div id="evalMapAlertB" class="hidden bg-indigo-900/90 border-2 border-amber-300 text-amber-300 font-display text-lg md:text-xl font-bold px-4 py-1.5 rounded-xl">
+                            🎉 TIM B MENEMUKAN POTONGAN PETA!
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Next Question / Final Result Button -->
+                <button onclick="goToNextQuestion()" id="btnNextQuestion" class="btn-3d-gold px-10 py-4 rounded-2xl font-display text-2xl md:text-4xl font-black cursor-pointer">
+                    ➡️ LANJUT KE MISI BERIKUTNYA!
+                </button>
+            </div>
+
+        </section>
+
+        <!-- ----------------------------------------------------- -->
+        <!-- SCREEN 4: FINAL RESULT & TREASURE CHEST OPENING       -->
+        <!-- ----------------------------------------------------- -->
+        <section id="screenFinalResult" class="hidden w-full max-w-5xl card-3d-panel rounded-3xl p-6 md:p-10 text-center animate-pop relative overflow-hidden">
+            
+            <div class="inline-flex items-center gap-2 bg-amber-400/20 border-2 border-amber-400 text-amber-300 px-6 py-1.5 rounded-full font-display text-2xl md:text-3xl font-bold mb-2">
+                <span>🏆 FINAL RESULT — MISI 15/15 SELESAI!</span>
+            </div>
+
+            <h2 class="font-display text-4xl sm:text-5xl md:text-6xl font-black text-amber-300 text-outline-heavy my-2 animate-bounce">
+                💎 TREASURE FOUND! 💎
+            </h2>
+
+            <!-- Winner Announcement Banner -->
+            <div id="finalWinnerBanner" class="font-display text-3xl sm:text-4xl md:text-5xl font-black text-white text-outline-heavy my-3">
+                🏆 TIM A MENEMUKAN HARTA KARUN!
+            </div>
+            <p id="finalWinnerSub" class="text-xl md:text-2xl text-amber-100 font-bold mb-5">
+                Luar biasa! Seluruh kelas telah berpetualang membandingkan bilangan desimal!
+            </p>
+
+            <!-- Animated Treasure Chest SVG Centerpiece -->
+            <div class="relative w-56 h-56 md:w-64 md:h-64 mx-auto my-2 flex items-center justify-center">
+                <!-- Spinning Sunburst Rays -->
+                <svg class="absolute inset-0 w-full h-full animate-sunray opacity-60" viewBox="0 0 200 200">
+                    <g fill="#fde047">
+                        <polygon points="100,100 90,0 110,0"/>
+                        <polygon points="100,100 90,0 110,0" transform="rotate(30 100 100)"/>
+                        <polygon points="100,100 90,0 110,0" transform="rotate(60 100 100)"/>
+                        <polygon points="100,100 90,0 110,0" transform="rotate(90 100 100)"/>
+                        <polygon points="100,100 90,0 110,0" transform="rotate(120 100 100)"/>
+                        <polygon points="100,100 90,0 110,0" transform="rotate(150 100 100)"/>
+                        <polygon points="100,100 90,0 110,0" transform="rotate(180 100 100)"/>
+                        <polygon points="100,100 90,0 110,0" transform="rotate(210 100 100)"/>
+                        <polygon points="100,100 90,0 110,0" transform="rotate(240 100 100)"/>
+                        <polygon points="100,100 90,0 110,0" transform="rotate(270 100 100)"/>
+                        <polygon points="100,100 90,0 110,0" transform="rotate(300 100 100)"/>
+                        <polygon points="100,100 90,0 110,0" transform="rotate(330 100 100)"/>
+                    </g>
+                </svg>
+
+                <!-- Glowing Open Treasure Chest & Gems -->
+                <svg class="relative z-10 w-48 h-48 md:w-56 md:h-56 chest-glow" viewBox="0 0 200 200">
+                    <!-- Open Chest Lid -->
+                    <path d="M25,80 Q100,25 175,80 L165,45 Q100,5 35,45 Z" fill="#92400e" stroke="#fbbf24" stroke-width="6"/>
+                    <!-- Glowing Gold & Gems Inside -->
+                    <ellipse cx="100" cy="88" rx="68" ry="22" fill="#fde047"/>
+                    <!-- Red Ruby -->
+                    <polygon points="75,75 90,60 105,75 90,92" fill="#f43f5e" stroke="#fff" stroke-width="2"/>
+                    <!-- Blue Diamond -->
+                    <polygon points="105,70 122,52 138,70 122,88" fill="#38bdf8" stroke="#fff" stroke-width="2"/>
+                    <!-- Emerald Gem -->
+                    <polygon points="52,82 65,68 78,82 65,95" fill="#10b981" stroke="#fff" stroke-width="2"/>
+                    <!-- Chest Base -->
+                    <rect x="25" y="88" width="150" height="80" rx="12" fill="#78350f" stroke="#fbbf24" stroke-width="7"/>
+                    <rect x="25" y="118" width="150" height="12" fill="#fbbf24"/>
+                    <!-- Golden Lock -->
+                    <rect x="86" y="102" width="28" height="34" rx="6" fill="#fde047" stroke="#92400e" stroke-width="4"/>
+                    <circle cx="100" cy="117" r="5" fill="#451a03"/>
+                </svg>
+            </div>
+
+            <!-- Final Team Scorecards & Complete Maps -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-5">
+                <div id="finalBoxA" class="bg-sky-950/90 border-4 border-sky-400 rounded-3xl p-6">
+                    <div class="font-display text-3xl md:text-5xl font-black text-white text-outline-dark">
+                        🔵 <span class="teamANameText">TIM A</span> — <span id="finalScoreA" class="text-amber-300">130</span> POIN
+                    </div>
+                    <div class="mt-3 text-xl md:text-2xl font-bold text-sky-200">
+                        🗺️ PETA LENGKAP: <span id="finalMapA" class="text-amber-300 tracking-widest ml-2">■ ■ ■ ■ ■</span>
+                    </div>
+                </div>
+
+                <div id="finalBoxB" class="bg-rose-950/90 border-4 border-rose-400 rounded-3xl p-6">
+                    <div class="font-display text-3xl md:text-5xl font-black text-white text-outline-dark">
+                        🔴 <span class="teamBNameText">TIM B</span> — <span id="finalScoreB" class="text-amber-300">120</span> POIN
+                    </div>
+                    <div class="mt-3 text-xl md:text-2xl font-bold text-rose-200">
+                        🗺️ PETA LENGKAP: <span id="finalMapB" class="text-amber-300 tracking-widest ml-2">■ ■ ■ ■ ■</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Play Again / Home Buttons -->
+            <div class="flex flex-wrap items-center justify-center gap-4 mt-6">
+                <button onclick="restartFullGame()" class="btn-3d-gold px-8 py-4 rounded-2xl font-display text-2xl md:text-3xl font-black cursor-pointer">
+                    🔄 MAIN LAGI DARI AWAL
+                </button>
+                <button onclick="showScreen('screenHome')" class="btn-3d-blue px-6 py-4 rounded-2xl font-display text-xl md:text-2xl font-bold text-white cursor-pointer">
+                    🏠 MENU UTAMA
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========================================================= -->
+    <!-- MODAL 1: ⚙️ TEACHER MODE (FULL CLASSROOM CONTROL PANEL)   -->
+    <!-- ========================================================= -->
+    <div id="teacherModal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md hidden items-center justify-center p-4 overflow-y-auto">
+        <div class="w-full max-w-4xl card-3d-panel rounded-3xl p-6 md:p-8 border-4 border-amber-400 my-8">
+            <div class="flex items-center justify-between pb-4 mb-5 border-b-2 border-slate-700">
+                <h2 class="font-display text-3xl md:text-4xl font-black text-amber-300 flex items-center gap-3">
+                    <span>⚙️ TEACHER MODE (PANEL KONTROL GURU)</span>
+                </h2>
+                <button onclick="closeTeacherModal()" class="bg-rose-600 hover:bg-rose-500 text-white font-black px-4 py-2 rounded-xl text-xl cursor-pointer">
+                    ✕ TUTUP
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                
+                <!-- 1. Mode Permainan & Kamera -->
+                <div class="bg-slate-900/90 border-2 border-slate-600 rounded-2xl p-4 space-y-3">
+                    <h3 class="font-display text-xl font-bold text-amber-300">📷 1. Mode Pembacaan &amp; Kamera</h3>
+                    <div class="grid grid-cols-2 gap-3">
+                        <button onclick="setGameMode('camera')" id="btnModeCamera" class="py-3 px-4 rounded-xl font-display font-bold text-lg border-4 border-sky-400 bg-sky-600 text-white cursor-pointer">
+                            📷 Camera Mode
+                        </button>
+                        <button onclick="setGameMode('manual')" id="btnModeManual" class="py-3 px-4 rounded-xl font-display font-bold text-lg border-4 border-slate-600 bg-slate-800 text-slate-300 cursor-pointer">
+                            ✋ Manual Mode
+                        </button>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <button onclick="initCameraStream()" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-4 py-2 rounded-xl text-sm cursor-pointer">
+                            🎥 Aktifkan Kamera
+                        </button>
+                        <button onclick="closeTeacherModal(); goToCameraSetup();" class="bg-sky-600 hover:bg-sky-500 text-white font-bold px-4 py-2 rounded-xl text-sm cursor-pointer">
+                            📐 Atur Zona Kamera
+                        </button>
+                        <button onclick="closeTeacherModal(); openPrintableCardsModal();" class="bg-purple-600 hover:bg-purple-500 text-white font-bold px-4 py-2 rounded-xl text-sm cursor-pointer">
+                            🖨️ Cetak Kartu Siswa
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 2. Pengaturan Waktu Diskusi & Suara -->
+                <div class="bg-slate-900/90 border-2 border-slate-600 rounded-2xl p-4 space-y-3">
+                    <h3 class="font-display text-xl font-bold text-amber-300">⏱️ 2. Waktu Diskusi &amp; Suara</h3>
+                    <div>
+                        <label class="text-sm font-bold text-slate-300 block mb-2">Pilih Durasi Waktu Diskusi:</label>
+                        <div class="grid grid-cols-3 gap-3">
+                            <button onclick="setDiscussionDuration(5)" id="btnTime5" class="py-2.5 rounded-xl font-display font-bold text-lg bg-slate-800 border-2 border-slate-600 cursor-pointer">5 Detik</button>
+                            <button onclick="setDiscussionDuration(10)" id="btnTime10" class="py-2.5 rounded-xl font-display font-bold text-lg bg-amber-500 text-slate-950 border-2 border-white cursor-pointer">10 Detik</button>
+                            <button onclick="setDiscussionDuration(15)" id="btnTime15" class="py-2.5 rounded-xl font-display font-bold text-lg bg-slate-800 border-2 border-slate-600 cursor-pointer">15 Detik</button>
+                        </div>
+                    </div>
+                    <div class="pt-2 flex items-center justify-between">
+                        <span class="font-bold text-slate-200">Efek Suara Game:</span>
+                        <button onclick="toggleSound()" id="teacherSoundBtn" class="bg-emerald-600 text-white font-bold px-4 py-2 rounded-xl cursor-pointer">
+                            🔊 Suara: AKTIF
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 3. Nama Tim & Penyesuaian Skor -->
+                <div class="bg-slate-900/90 border-2 border-slate-600 rounded-2xl p-4 space-y-3">
+                    <h3 class="font-display text-xl font-bold text-amber-300">🏆 3. Nama Tim &amp; Atur Skor</h3>
+                    
+                    <!-- Team A Controls -->
+                    <div class="bg-sky-950/80 border border-sky-400/50 p-3 rounded-xl space-y-2">
+                        <div class="flex items-center gap-2">
+                            <span class="text-xl">🔵</span>
+                            <input type="text" id="inputTeamAName" value="TIM A" onchange="updateTeamNames()" class="bg-slate-900 border-2 border-sky-400 rounded-lg px-3 py-1 font-bold text-white w-full">
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-bold text-sky-200">Skor: <strong id="teacherScoreA" class="text-lg text-white">0</strong></span>
+                            <div class="flex gap-1.5">
+                                <button onclick="adjustTeamScore('A', -10)" class="bg-rose-700 hover:bg-rose-600 px-2.5 py-1 rounded-lg font-bold text-sm cursor-pointer">-10</button>
+                                <button onclick="adjustTeamScore('A', -5)" class="bg-rose-700 hover:bg-rose-600 px-2.5 py-1 rounded-lg font-bold text-sm cursor-pointer">-5</button>
+                                <button onclick="adjustTeamScore('A', 5)" class="bg-emerald-700 hover:bg-emerald-600 px-2.5 py-1 rounded-lg font-bold text-sm cursor-pointer">+5</button>
+                                <button onclick="adjustTeamScore('A', 10)" class="bg-emerald-700 hover:bg-emerald-600 px-2.5 py-1 rounded-lg font-bold text-sm cursor-pointer">+10</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Team B Controls -->
+                    <div class="bg-rose-950/80 border border-rose-400/50 p-3 rounded-xl space-y-2">
+                        <div class="flex items-center gap-2">
+                            <span class="text-xl">🔴</span>
+                            <input type="text" id="inputTeamBName" value="TIM B" onchange="updateTeamNames()" class="bg-slate-900 border-2 border-rose-400 rounded-lg px-3 py-1 font-bold text-white w-full">
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm font-bold text-rose-200">Skor: <strong id="teacherScoreB" class="text-lg text-white">0</strong></span>
+                            <div class="flex gap-1.5">
+                                <button onclick="adjustTeamScore('B', -10)" class="bg-rose-700 hover:bg-rose-600 px-2.5 py-1 rounded-lg font-bold text-sm cursor-pointer">-10</button>
+                                <button onclick="adjustTeamScore('B', -5)" class="bg-rose-700 hover:bg-rose-600 px-2.5 py-1 rounded-lg font-bold text-sm cursor-pointer">-5</button>
+                                <button onclick="adjustTeamScore('B', 5)" class="bg-emerald-700 hover:bg-emerald-600 px-2.5 py-1 rounded-lg font-bold text-sm cursor-pointer">+5</button>
+                                <button onclick="adjustTeamScore('B', 10)" class="bg-emerald-700 hover:bg-emerald-600 px-2.5 py-1 rounded-lg font-bold text-sm cursor-pointer">+10</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Koreksi Hasil Kamera & Detail Kartu Terbaca -->
+                <div class="bg-slate-900/90 border-2 border-slate-600 rounded-2xl p-4 space-y-3">
+                    <h3 class="font-display text-xl font-bold text-amber-300">📊 4. Jumlah Kartu Terbaca &amp; Koreksi</h3>
+                    <div class="text-sm text-slate-300 font-bold bg-slate-950 p-3 rounded-xl space-y-2">
+                        <div>🔵 <span class="teamANameText">TIM A</span>: <span id="teacherReadoutA" class="text-sky-300">&lt; = 0 | = = 0 | &gt; = 0 (Mayoritas: -)</span></div>
+                        <div>🔴 <span class="teamBNameText">TIM B</span>: <span id="teacherReadoutB" class="text-rose-300">&lt; = 0 | = = 0 | &gt; = 0 (Mayoritas: -)</span></div>
+                    </div>
+                    <div class="space-y-2 pt-1">
+                        <div class="text-xs font-bold text-amber-200">Koreksi Cepat Jawaban Soal Aktif:</div>
+                        <div class="flex items-center justify-between gap-2">
+                            <span class="text-sm font-bold text-sky-300">🔵 Tim A:</span>
+                            <div class="flex gap-2">
+                                <button onclick="applyManualOverride('A', '<')" class="bg-white text-slate-950 font-black px-3 py-1 rounded-lg cursor-pointer">&lt;</button>
+                                <button onclick="applyManualOverride('A', '=')" class="bg-white text-slate-950 font-black px-3 py-1 rounded-lg cursor-pointer">=</button>
+                                <button onclick="applyManualOverride('A', '>')" class="bg-white text-slate-950 font-black px-3 py-1 rounded-lg cursor-pointer">&gt;</button>
+                            </div>
+                            <span class="text-sm font-bold text-rose-300 ml-2">🔴 Tim B:</span>
+                            <div class="flex gap-2">
+                                <button onclick="applyManualOverride('B', '<')" class="bg-white text-slate-950 font-black px-3 py-1 rounded-lg cursor-pointer">&lt;</button>
+                                <button onclick="applyManualOverride('B', '=')" class="bg-white text-slate-950 font-black px-3 py-1 rounded-lg cursor-pointer">=</button>
+                                <button onclick="applyManualOverride('B', '>')" class="bg-white text-slate-950 font-black px-3 py-1 rounded-lg cursor-pointer">&gt;</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Jump Question & Reset -->
+                    <div class="pt-3 border-t border-slate-700 flex flex-wrap items-center justify-between gap-2">
+                        <div class="flex items-center gap-2">
+                            <label class="text-xs font-bold text-slate-300">Pindah Soal:</label>
+                            <select id="teacherJumpSelect" onchange="jumpToQuestion(this.value)" class="bg-slate-800 border border-slate-500 rounded-lg px-2 py-1 text-sm font-bold text-white">
+                                <!-- Populated via JS -->
+                            </select>
+                        </div>
+                        <div class="flex gap-2">
+                            <button onclick="resetScoresOnly()" class="bg-amber-600 hover:bg-amber-500 text-white font-bold px-3 py-1.5 rounded-lg text-xs cursor-pointer">
+                                Reset Skor
+                            </button>
+                            <button onclick="restartFullGame(); closeTeacherModal();" class="bg-rose-600 hover:bg-rose-500 text-white font-bold px-3 py-1.5 rounded-lg text-xs cursor-pointer">
+                                Ulangi Permainan
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- MODAL 2: 🖨️ CETAK KARTU JAWABAN (<, =, >)                 -->
+    <!-- ========================================================= -->
+    <div id="printableCardsModal" class="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md hidden items-center justify-center p-4 overflow-y-auto">
+        <div class="w-full max-w-4xl card-3d-panel rounded-3xl p-6 md:p-8 border-4 border-sky-400 my-8">
+            <div class="flex flex-wrap items-center justify-between gap-3 pb-4 mb-5 border-b-2 border-slate-700">
+                <div>
+                    <h2 class="font-display text-2xl md:text-4xl font-black text-sky-300">
+                        🖨️ DESAIN KARTU JAWABAN SISWA (&lt; , = , &gt;)
+                    </h2>
+                    <p class="text-sm md:text-base text-slate-300 font-bold">
+                        Ukuran simbol besar, kontras tinggi (hitam di atas putih), tanpa teks/gambar tambahan agar mudah dibaca kamera.
+                    </p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button onclick="window.print()" class="btn-3d-gold px-5 py-2.5 rounded-xl font-display text-lg font-black cursor-pointer">
+                        🖨️ CETAK SEKARANG (PRINT)
+                    </button>
+                    <button onclick="closePrintableCardsModal()" class="bg-rose-600 hover:bg-rose-500 text-white font-black px-4 py-2.5 rounded-xl cursor-pointer">
+                        ✕ TUTUP
+                    </button>
+                </div>
+            </div>
+
+            <!-- Preview of the 3 Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white text-black rounded-2xl p-8 border-8 border-black flex items-center justify-center aspect-[3/4] shadow-2xl">
+                    <span class="font-display text-[140px] font-black leading-none select-none">&lt;</span>
+                </div>
+                <div class="bg-white text-black rounded-2xl p-8 border-8 border-black flex items-center justify-center aspect-[3/4] shadow-2xl">
+                    <span class="font-display text-[140px] font-black leading-none select-none">=</span>
+                </div>
+                <div class="bg-white text-black rounded-2xl p-8 border-8 border-black flex items-center justify-center aspect-[3/4] shadow-2xl">
+                    <span class="font-display text-[140px] font-black leading-none select-none">&gt;</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HIDDEN PRINTABLE LAYOUT FOR @media print -->
+    <div id="printableArea" class="hidden print:block">
+        <div class="print-page-break flex items-center justify-center h-screen w-screen p-12">
+            <div class="w-full h-full border-[16px] border-black rounded-3xl flex items-center justify-center bg-white">
+                <span style="font-size: 320px; font-weight: 900; font-family: 'Fredoka', sans-serif; color: #000;">&lt;</span>
+            </div>
+        </div>
+        <div class="print-page-break flex items-center justify-center h-screen w-screen p-12">
+            <div class="w-full h-full border-[16px] border-black rounded-3xl flex items-center justify-center bg-white">
+                <span style="font-size: 320px; font-weight: 900; font-family: 'Fredoka', sans-serif; color: #000;">=</span>
+            </div>
+        </div>
+        <div class="flex items-center justify-center h-screen w-screen p-12">
+            <div class="w-full h-full border-[16px] border-black rounded-3xl flex items-center justify-center bg-white">
+                <span style="font-size: 320px; font-weight: 900; font-family: 'Fredoka', sans-serif; color: #000;">&gt;</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- JAVASCRIPT ENGINE: GAME STATE, CAMERA CV, AUDIO & UI      -->
+    <!-- ========================================================= -->
+    <script>
+        /**************************************************************
+         * 1. EXACT 15 QUESTIONS DATA (SECTION 16) & ENVIRONMENTS
+         **************************************************************/
+        const QUESTIONS = [
+            { id: 1,  left: "0,5", right: "0,8", answer: "<", explain: "0,5 lebih kecil dari 0,8, sehingga tanda yang benar adalah <." },
+            { id: 2,  left: "0,9", right: "0,4", answer: ">", explain: "0,9 lebih besar dari 0,4, sehingga tanda yang benar adalah >." },
+            { id: 3,  left: "0,7", right: "0,7", answer: "=", explain: "0,7 sama nilainya dengan 0,7, sehingga tanda yang benar adalah =." },
+            { id: 4,  left: "1,3", right: "1,8", answer: "<", explain: "1,3 lebih kecil dari 1,8, sehingga tanda yang benar adalah <." },
+            { id: 5,  left: "2,6", right: "2,1", answer: ">", explain: "2,6 lebih besar dari 2,1, sehingga tanda yang benar adalah >." },
+            { id: 6,  left: "1,5", right: "1,5", answer: "=", explain: "1,5 sama nilainya dengan 1,5, sehingga tanda yang benar adalah =." },
+            { id: 7,  left: "0,3", right: "0,6", answer: "<", explain: "0,3 lebih kecil dari 0,6, sehingga tanda yang benar adalah <." },
+            { id: 8,  left: "2,8", right: "2,4", answer: ">", explain: "2,8 lebih besar dari 2,4, sehingga tanda yang benar adalah >." },
+            { id: 9,  left: "3,2", right: "3,2", answer: "=", explain: "3,2 sama nilainya dengan 3,2, sehingga tanda yang benar adalah =." },
+            { id: 10, left: "1,7", right: "1,9", answer: "<", explain: "1,7 lebih kecil dari 1,9, sehingga tanda yang benar adalah <." },
+            { id: 11, left: "4,6", right: "4,2", answer: ">", explain: "4,6 lebih besar dari 4,2, sehingga tanda yang benar adalah >." },
+            { id: 12, left: "2,3", right: "2,7", answer: "<", explain: "2,3 lebih kecil dari 2,7, sehingga tanda yang benar adalah <." },
+            { id: 13, left: "3,5", right: "3,5", answer: "=", explain: "3,5 sama nilainya dengan 3,5, sehingga tanda yang benar adalah =." },
+            { id: 14, left: "4,8", right: "4,3", answer: ">", explain: "4,8 lebih besar dari 4,3, sehingga tanda yang benar adalah >." },
+            { id: 15, left: "5,2", right: "5,9", answer: "<", explain: "5,2 lebih kecil dari 5,9, sehingga tanda yang benar adalah <." }
+        ];
+
+        const ENVIRONMENTS = [
+            { stage: 1, range: [1, 3],   icon: "🌳", name: "Hutan Misterius",     bgClass: "env-bg-1", desc: "Pepohonan rimbun menyimpan petunjuk pertama menuju harta karun!" },
+            { stage: 2, range: [4, 6],   icon: "🌊", name: "Sungai Petualangan",  bgClass: "env-bg-2", desc: "Seberangi arus sungai deras dengan ketepatan membandingkan desimal!" },
+            { stage: 3, range: [7, 9],   icon: "🏔️", name: "Pegunungan",          bgClass: "env-bg-3", desc: "Daki puncak bersalju dan temukan potongan peta berikutnya!" },
+            { stage: 4, range: [10, 12], icon: "🕳️", name: "Gua Rahasia",         bgClass: "env-bg-4", desc: "Kristal berkilau di dalam gua menerangi jalan menuju pulau terakhir!" },
+            { stage: 5, range: [13, 15], icon: "🏝️", name: "Pulau Harta Karun",   bgClass: "env-bg-5", desc: "Peti harta karun sudah di depan mata! Jawab 3 misi terakhir!" }
+        ];
+
+        /**************************************************************
+         * 2. GLOBAL APPLICATION STATE
+         **************************************************************/
+        const state = {
+            mode: 'camera', // 'camera' or 'manual'
+            soundEnabled: true,
+            discussionSeconds: 10,
+            currentQuestionIndex: 0, // 0 to 14
+            lastEnvironmentStage: 0,
+
+            // Camera & Zones
+            cameraStream: null,
+            cameraActive: false,
+            mirrorCamera: true,
+            zoneSplitPercent: 50,  // Left zone width %
+            zoneHeightPercent: 85, // Active vertical height %
+
+            // Team Data
+            teamA: {
+                name: "TIM A",
+                score: 0,
+                combo: 0,
+                correctCount: 0,
+                mapPieces: 0, // 0 to 5
+                scanCounts: { '<': 0, '=': 0, '>': 0 },
+                chosenAnswer: null,
+                isTie: false
+            },
+            teamB: {
+                name: "TIM B",
+                score: 0,
+                combo: 0,
+                correctCount: 0,
+                mapPieces: 0, // 0 to 5
+                scanCounts: { '<': 0, '=': 0, '>': 0 },
+                chosenAnswer: null,
+                isTie: false
+            },
+
+            // Timers & Animation Handles
+            activeInterval: null,
+            scanAnimFrame: null,
+            setupAnimFrame: null,
+            discussionCamFrame: null,
+            prevFrameLuma: null
+        };
+
+        /**************************************************************
+         * 3. SYNTHESIZED SOUND EFFECTS (WEB AUDIO API)
+         **************************************************************/
+        let audioCtx = null;
+
+        function ensureAudioCtx() {
+            if (!audioCtx) {
+                const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+                if (AudioContextClass) {
+                    audioCtx = new AudioContextClass();
+                }
+            }
+            if (audioCtx && audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+        }
+
+        function playTone(freq, type = 'sine', duration = 0.15, volume = 0.2, delay = 0) {
+            if (!state.soundEnabled) return;
+            try {
+                ensureAudioCtx();
+                if (!audioCtx) return;
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = type;
+                osc.frequency.setValueAtTime(freq, audioCtx.currentTime + delay);
+                gain.gain.setValueAtTime(volume, audioCtx.currentTime + delay);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + delay + duration);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start(audioCtx.currentTime + delay);
+                osc.stop(audioCtx.currentTime + delay + duration);
+            } catch (e) {}
+        }
+
+        function sfxTick() {
+            playTone(520, 'triangle', 0.08, 0.15);
+        }
+        function sfxCountdown321() {
+            playTone(660, 'square', 0.18, 0.22);
+        }
+        function sfxAngkat() {
+            playTone(880, 'sawtooth', 0.35, 0.28, 0);
+            playTone(1174, 'triangle', 0.4, 0.28, 0.1);
+        }
+        function sfxScanBeep() {
+            playTone(980, 'sine', 0.09, 0.12);
+        }
+        function sfxCorrect() {
+            playTone(523.25, 'triangle', 0.15, 0.25, 0);
+            playTone(659.25, 'triangle', 0.15, 0.25, 0.12);
+            playTone(783.99, 'triangle', 0.18, 0.25, 0.24);
+            playTone(1046.50, 'triangle', 0.35, 0.3, 0.36);
+        }
+        function sfxCombo() {
+            playTone(587.33, 'sawtooth', 0.12, 0.25, 0);
+            playTone(880, 'sawtooth', 0.12, 0.25, 0.1);
+            playTone(1174.66, 'sawtooth', 0.35, 0.3, 0.2);
+        }
+        function sfxVictoryFanfare() {
+            const notes = [523.25, 659.25, 783.99, 1046.5, 783.99, 1046.5];
+            const times = [0, 0.15, 0.3, 0.45, 0.7, 0.9];
+            const durs  = [0.14, 0.14, 0.14, 0.22, 0.18, 0.6];
+            notes.forEach((n, idx) => playTone(n, 'triangle', durs[idx], 0.3, times[idx]));
+        }
+
+        function toggleSound() {
+            state.soundEnabled = !state.soundEnabled;
+            const icon = state.soundEnabled ? "🔊" : "🔇";
+            document.getElementById('soundToggleBtn').textContent = icon;
+            const tBtn = document.getElementById('teacherSoundBtn');
+            if (tBtn) {
+                tBtn.textContent = state.soundEnabled ? "🔊 Suara: AKTIF" : "🔇 Suara: MATI";
+                tBtn.className = state.soundEnabled
+                    ? "bg-emerald-600 text-white font-bold px-4 py-2 rounded-xl cursor-pointer"
+                    : "bg-slate-700 text-slate-300 font-bold px-4 py-2 rounded-xl cursor-pointer";
+            }
+            if (state.soundEnabled) sfxTick();
+        }
+
+        /**************************************************************
+         * 4. HUD & ENVIRONMENT UPDATES
+         **************************************************************/
+        function renderMapSquares(piecesCount) {
+            let html = '';
+            for (let i = 1; i <= 5; i++) {
+                if (i <= piecesCount) {
+                    html += `<span class="inline-block bg-amber-400 text-slate-950 px-1.5 rounded border border-white shadow">■</span>`;
+                } else {
+                    html += `<span class="inline-block bg-slate-800/90 text-slate-400 px-1.5 rounded border border-slate-500">□</span>`;
+                }
+            }
+            return html;
+        }
+
+        function getEnvironmentForQuestion(qIndex) {
+            const qNum = qIndex + 1;
+            return ENVIRONMENTS.find(e => qNum >= e.range[0] && qNum <= e.range[1]) || ENVIRONMENTS[0];
+        }
+
+        function updateHUD() {
+            // Names
+            document.getElementById('hudTeamAName').textContent = state.teamA.name;
+            document.getElementById('hudTeamBName').textContent = state.teamB.name;
+            document.querySelectorAll('.teamANameText').forEach(el => el.textContent = state.teamA.name);
+            document.querySelectorAll('.teamBNameText').forEach(el => el.textContent = state.teamB.name);
+
+            // Scores
+            document.getElementById('hudTeamAScore').textContent = state.teamA.score;
+            document.getElementById('hudTeamBScore').textContent = state.teamB.score;
+            document.getElementById('teacherScoreA').textContent = state.teamA.score;
+            document.getElementById('teacherScoreB').textContent = state.teamB.score;
+
+            // Combos
+            const comboElA = document.getElementById('hudTeamACombo');
+            if (state.teamA.combo >= 2) {
+                comboElA.textContent = `🔥 ${state.teamA.combo}x`;
+                comboElA.classList.remove('hidden');
+            } else {
+                comboElA.classList.add('hidden');
+            }
+
+            const comboElB = document.getElementById('hudTeamBCombo');
+            if (state.teamB.combo >= 2) {
+                comboElB.textContent = `🔥 ${state.teamB.combo}x`;
+                comboElB.classList.remove('hidden');
+            } else {
+                comboElB.classList.add('hidden');
+            }
+
+            // Map Pieces (5 segments)
+            document.getElementById('hudTeamAMap').innerHTML = renderMapSquares(state.teamA.mapPieces);
+            document.getElementById('hudTeamBMap').innerHTML = renderMapSquares(state.teamB.mapPieces);
+
+            // Mode Badge
+            const modeBadge = document.getElementById('hudModeBadge');
+            if (modeBadge) {
+                modeBadge.textContent = state.mode === 'camera' ? '📷 Camera Mode' : '✋ Manual Mode';
+            }
+
+            // Environment Theme
+            const env = getEnvironmentForQuestion(state.currentQuestionIndex);
+            document.getElementById('hudEnvIcon').textContent = env.icon;
+            document.getElementById('hudEnvName').textContent = env.name;
+            document.getElementById('stageEnvIcon').textContent = env.icon;
+            document.getElementById('stageEnvTitle').textContent = env.name;
+
+            const appBody = document.getElementById('appBody');
+            ENVIRONMENTS.forEach(e => appBody.classList.remove(e.bgClass));
+            appBody.classList.add(env.bgClass);
+
+            // Mission 15 Dots
+            const dotsContainer = document.getElementById('missionDotsTrack');
+            if (dotsContainer) {
+                let dotsHtml = '';
+                for (let i = 0; i < QUESTIONS.length; i++) {
+                    if (i < state.currentQuestionIndex) {
+                        dotsHtml += `<span class="w-4 h-4 rounded-full bg-emerald-400 border-2 border-white shadow"></span>`;
+                    } else if (i === state.currentQuestionIndex) {
+                        dotsHtml += `<span class="w-6 h-6 rounded-full bg-amber-400 border-2 border-white animate-pulse flex items-center justify-center text-xs font-black text-slate-950">${i + 1}</span>`;
+                    } else {
+                        dotsHtml += `<span class="w-3.5 h-3.5 rounded-full bg-slate-700 border border-slate-500"></span>`;
+                    }
+                }
+                dotsContainer.innerHTML = dotsHtml;
+            }
+        }
+
+        /**************************************************************
+         * 5. SCREEN NAVIGATION & CAMERA SETUP
+         **************************************************************/
+        function clearAllTimers() {
+            if (state.activeInterval) {
+                clearInterval(state.activeInterval);
+                state.activeInterval = null;
+            }
+            if (state.scanAnimFrame) {
+                cancelAnimationFrame(state.scanAnimFrame);
+                state.scanAnimFrame = null;
+            }
+            if (state.setupAnimFrame) {
+                cancelAnimationFrame(state.setupAnimFrame);
+                state.setupAnimFrame = null;
+            }
+            if (state.discussionCamFrame) {
+                cancelAnimationFrame(state.discussionCamFrame);
+                state.discussionCamFrame = null;
+            }
+        }
+
+        function showScreen(screenId) {
+            clearAllTimers();
+            const screens = ['screenHome', 'screenCameraSetup', 'screenGameplay', 'screenFinalResult'];
+            screens.forEach(id => {
+                document.getElementById(id).classList.add('hidden');
+            });
+            document.getElementById(screenId).classList.remove('hidden');
+            updateHUD();
+        }
+
+        function goToCameraSetup() {
+            state.mode = 'camera';
+            showScreen('screenCameraSetup');
+            // Automatically request webcam activation so camera is immediately ready for students
+            if (!state.cameraActive) {
+                initCameraStream();
+            }
+            startSetupPreviewLoop();
+        }
+
+        function startWithManualMode() {
+            state.mode = 'manual';
+            state.currentQuestionIndex = 0;
+            state.lastEnvironmentStage = 0;
+            showScreen('screenGameplay');
+            loadQuestionStage(0, true);
+        }
+
+        async function initCameraStream() {
+            try {
+                if (state.cameraStream) {
+                    state.cameraStream.getTracks().forEach(t => t.stop());
+                }
+                const stream = await navigator.mediaDevices.getUserMedia({
+                    video: { width: { ideal: 1280 }, height: { ideal: 720 }, facingMode: "user" },
+                    audio: false
+                });
+                state.cameraStream = stream;
+                state.cameraActive = true;
+
+                const videoIds = ['setupVideo', 'scanVideo', 'discussionLiveVideo', 'countdownLiveVideo'];
+                videoIds.forEach(id => {
+                    const vid = document.getElementById(id);
+                    if (vid) vid.srcObject = stream;
+                });
+
+                document.getElementById('setupSimCanvas').classList.add('hidden');
+                document.getElementById('setupCamStatusText').textContent = "✅ Kamera Kelas Aktif! Coba angkat kartu (<, =, >) di Zona Tim A & Tim B!";
+                document.getElementById('btnRequestCam').textContent = "✅ Kamera Terhubung";
+                sfxCorrect();
+            } catch (err) {
+                state.cameraActive = false;
+                document.getElementById('setupSimCanvas').classList.remove('hidden');
+                document.getElementById('setupCamStatusText').textContent = "⚠️ Kamera belum diizinkan. Mode Simulasi Kamera Kelas aktif.";
+            }
+        }
+
+        function updateZoneSplit(val) {
+            state.zoneSplitPercent = parseInt(val, 10);
+            const rightPct = 100 - state.zoneSplitPercent;
+            document.getElementById('zoneSplitLabel').textContent = `${state.zoneSplitPercent}% | ${rightPct}%`;
+
+            const boxA = document.getElementById('setupZoneABox');
+            const boxB = document.getElementById('setupZoneBBox');
+            const scanA = document.getElementById('scanZoneADiv');
+            const scanB = document.getElementById('scanZoneBDiv');
+
+            const wA = Math.max(20, state.zoneSplitPercent - 2);
+            const wB = Math.max(20, rightPct - 2);
+
+            if (boxA) boxA.style.width = `${wA}%`;
+            if (boxB) boxB.style.width = `${wB}%`;
+            if (scanA) scanA.style.width = `${wA}%`;
+            if (scanB) scanB.style.width = `${wB}%`;
+        }
+
+        function updateZoneHeight(val) {
+            state.zoneHeightPercent = parseInt(val, 10);
+            document.getElementById('zoneMarginLabel').textContent = `${state.zoneHeightPercent}% Tinggi`;
+            const hStr = `${state.zoneHeightPercent}%`;
+            ['setupZoneABox', 'setupZoneBBox', 'scanZoneADiv', 'scanZoneBDiv'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.style.height = hStr;
+            });
+        }
+
+        function toggleMirrorCamera(checked) {
+            state.mirrorCamera = checked;
+            const videoIds = ['setupVideo', 'scanVideo', 'discussionLiveVideo', 'countdownLiveVideo'];
+            videoIds.forEach(id => {
+                const v = document.getElementById(id);
+                if (!v) return;
+                if (checked) v.classList.add('scale-x-[-1]');
+                else v.classList.remove('scale-x-[-1]');
+            });
+        }
+
+        // Animated Classroom Card Preview & Real-time Warmup Test on Setup Screen
+        function startSetupPreviewLoop() {
+            const canvas = document.getElementById('setupSimCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d', { willReadFrequently: true });
+            const setupVid = document.getElementById('setupVideo');
+            let t = 0;
+
+            function renderSim() {
+                if (document.getElementById('screenCameraSetup').classList.contains('hidden')) return;
+                canvas.width = 800;
+                canvas.height = 450;
+
+                if (state.cameraActive && setupVid && setupVid.readyState >= 2) {
+                    // Analyze real camera feed during setup so students can test waving & holding up cards!
+                    canvas.classList.remove('hidden');
+                    ctx.clearRect(0, 0, 800, 450);
+                    ctx.save();
+                    if (state.mirrorCamera) {
+                        ctx.translate(800, 0);
+                        ctx.scale(-1, 1);
+                    }
+                    ctx.drawImage(setupVid, 0, 0, 800, 450);
+                    ctx.restore();
+
+                    const dummyTarget = { A: { '<': 0, '=': 0, '>': 0 }, B: { '<': 0, '=': 0, '>': 0 } };
+                    const liveStats = detectAndDrawBrightCardsOnFrame(ctx, 800, 450, dummyTarget, 0.5);
+                    const totalA = liveStats.cardsA;
+                    const totalB = liveStats.cardsB;
+
+                    const testA = document.getElementById('setupLiveTestA');
+                    const testB = document.getElementById('setupLiveTestB');
+                    if (testA) testA.textContent = totalA > 0 ? `✅ ${totalA} Kartu Terlihat!` : `👋 Gerakan Aktif!`;
+                    if (testB) testB.textContent = totalB > 0 ? `✅ ${totalB} Kartu Terlihat!` : `👋 Gerakan Aktif!`;
+                } else {
+                    canvas.classList.remove('hidden');
+                    // Classroom background gradient
+                    const grad = ctx.createLinearGradient(0, 0, 0, 450);
+                    grad.addColorStop(0, '#1e293b');
+                    grad.addColorStop(1, '#0f172a');
+                    ctx.fillStyle = grad;
+                    ctx.fillRect(0, 0, 800, 450);
+
+                    // Draw sample floating white cards in Left Zone (Team A) & Right Zone (Team B)
+                    const splitX = (state.zoneSplitPercent / 100) * 800;
+                    const sampleCards = [
+                        { x: splitX * 0.25, y: 180, sym: '<', phase: 0 },
+                        { x: splitX * 0.55, y: 230, sym: '<', phase: 1.2 },
+                        { x: splitX * 0.72, y: 165, sym: '=', phase: 2.4 },
+                        { x: splitX + (800 - splitX) * 0.28, y: 190, sym: '>', phase: 0.7 },
+                        { x: splitX + (800 - splitX) * 0.58, y: 225, sym: '>', phase: 1.9 },
+                        { x: splitX + (800 - splitX) * 0.78, y: 170, sym: '<', phase: 3.1 }
+                    ];
+
+                    sampleCards.forEach(c => {
+                        const dy = Math.sin(t * 0.05 + c.phase) * 8;
+                        ctx.save();
+                        ctx.translate(c.x, c.y + dy);
+                        ctx.fillStyle = '#ffffff';
+                        ctx.strokeStyle = '#38bdf8';
+                        ctx.lineWidth = 3;
+                        ctx.beginPath();
+                        ctx.roundRect(-28, -36, 56, 72, 8);
+                        ctx.fill();
+                        ctx.stroke();
+
+                        ctx.fillStyle = '#0f172a';
+                        ctx.font = '900 38px Fredoka, sans-serif';
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'middle';
+                        ctx.fillText(c.sym, 0, 2);
+                        ctx.restore();
+                    });
+                }
+                t++;
+                state.setupAnimFrame = requestAnimationFrame(renderSim);
+            }
+            renderSim();
+        }
+
+        function saveZonesAndStartGame() {
+            sfxCorrect();
+            state.currentQuestionIndex = 0;
+            state.lastEnvironmentStage = 0;
+            showScreen('screenGameplay');
+            loadQuestionStage(0, true);
+        }
+
+        /**************************************************************
+         * 6. GAMEPLAY FLOW: STAGE 1 (SOAL) -> STAGE 2 (DISKUSI) -> STAGE 3 (ANGKAT)
+         **************************************************************/
+        function showGameplaySubStage(stageId) {
+            const subStages = ['stageQuestionCard', 'stageCameraScan', 'stageManualModeInput', 'stageScanResult', 'stageQuestionResult'];
+            subStages.forEach(id => {
+                document.getElementById(id).classList.add('hidden');
+            });
+            document.getElementById(stageId).classList.remove('hidden');
+        }
+
+        function triggerEnvironmentTransition(env, callback) {
+            const overlay = document.getElementById('envTransitionOverlay');
+            document.getElementById('envTransIcon').textContent = env.icon;
+            document.getElementById('envTransTitle').textContent = env.name;
+            document.getElementById('envTransDesc').textContent = env.desc;
+            overlay.classList.remove('hidden');
+            overlay.classList.add('flex');
+            sfxCombo();
+
+            setTimeout(() => {
+                overlay.classList.add('hidden');
+                overlay.classList.remove('flex');
+                if (callback) callback();
+            }, 2200);
+        }
+
+        function loadQuestionStage(qIndex, checkEnvTransition = true) {
+            clearAllTimers();
+            state.currentQuestionIndex = qIndex;
+            const q = QUESTIONS[qIndex];
+            const env = getEnvironmentForQuestion(qIndex);
+
+            updateHUD();
+
+            if (checkEnvTransition && env.stage !== state.lastEnvironmentStage) {
+                state.lastEnvironmentStage = env.stage;
+                triggerEnvironmentTransition(env, () => {
+                    startStage1And2(q);
+                });
+            } else {
+                state.lastEnvironmentStage = env.stage;
+                startStage1And2(q);
+            }
+        }
+
+        function startStage1And2(q) {
+            showGameplaySubStage('stageQuestionCard');
+            document.getElementById('angkatOverlay').classList.add('hidden');
+
+            // Populate Mission & Question Numbers
+            document.getElementById('missionBadgeText').textContent = `MISI ${q.id}/15`;
+            document.getElementById('qLeftNum').textContent = q.left;
+            document.getElementById('qRightNum').textContent = q.right;
+            document.getElementById('qMiddleSlot').textContent = "___";
+            document.getElementById('scanQReminder').textContent = `${q.left} ___ ${q.right}`;
+            document.getElementById('manualQDisplay').textContent = `${q.left} ___ ${q.right}`;
+
+            // Start Live Classroom Activity Monitor during Discussion so students stay active
+            startDiscussionCameraActivityLoop();
+
+            // Start Stage 2 Discussion Timer (10 -> 9 -> ... -> 1)
+            let remaining = state.discussionSeconds;
+            const total = state.discussionSeconds;
+            const timerCircle = document.getElementById('bigTimerCircle');
+            const progressBar = document.getElementById('discussionProgressBar');
+            const banner = document.getElementById('phaseStatusBanner');
+
+            banner.innerHTML = `<span>🗣️ WAKTU DISKUSI TIM (${total} DETIK)!</span>`;
+            timerCircle.textContent = remaining;
+            progressBar.style.width = '100%';
+
+            state.activeInterval = setInterval(() => {
+                remaining--;
+                if (remaining >= 1) {
+                    timerCircle.textContent = remaining;
+                    const pct = Math.max(0, (remaining / total) * 100);
+                    progressBar.style.width = `${pct}%`;
+                    sfxTick();
+                } else {
+                    clearInterval(state.activeInterval);
+                    state.activeInterval = null;
+                    startStage3Countdown();
+                }
+            }, 1000);
+        }
+
+        // Live Classroom Activity & Motion Energy Loop during Stage 1-2 Discussion
+        function startDiscussionCameraActivityLoop() {
+            if (state.discussionCamFrame) cancelAnimationFrame(state.discussionCamFrame);
+            const canvas = document.getElementById('discussionActivityCanvas');
+            const video = document.getElementById('discussionLiveVideo');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d', { willReadFrequently: true });
+            canvas.width = 320;
+            canvas.height = 140;
+            let tick = 0;
+
+            function loopActivity() {
+                if (document.getElementById('stageQuestionCard').classList.contains('hidden')) return;
+
+                let energyA = 45 + Math.round(Math.sin(tick * 0.12) * 25 + Math.random() * 15);
+                let energyB = 45 + Math.round(Math.cos(tick * 0.11) * 25 + Math.random() * 15);
+
+                if (state.cameraActive && video && video.readyState >= 2) {
+                    ctx.clearRect(0, 0, 320, 140);
+                    ctx.save();
+                    if (state.mirrorCamera) {
+                        ctx.translate(320, 0);
+                        ctx.scale(-1, 1);
+                    }
+                    ctx.drawImage(video, 0, 0, 320, 140);
+                    ctx.restore();
+
+                    const imgData = ctx.getImageData(0, 0, 320, 140).data;
+                    const splitX = Math.floor((state.zoneSplitPercent / 100) * 320);
+                    let motionA = 0, motionB = 0, brightCardsA = 0, brightCardsB = 0;
+
+                    if (!state.prevFrameLuma || state.prevFrameLuma.length !== 320 * 140) {
+                        state.prevFrameLuma = new Uint8Array(320 * 140);
+                    }
+
+                    for (let y = 10; y < 130; y += 8) {
+                        for (let x = 10; x < 310; x += 8) {
+                            const pIdx = y * 320 + x;
+                            const idx = pIdx * 4;
+                            const luma = (imgData[idx] * 2 + imgData[idx + 1] * 5 + imgData[idx + 2]) >> 3;
+                            const diff = Math.abs(luma - state.prevFrameLuma[pIdx]);
+                            state.prevFrameLuma[pIdx] = luma;
+
+                            if (diff > 18) {
+                                if (x < splitX) motionA++;
+                                else motionB++;
+                            }
+                            if (luma > 200) {
+                                if (x < splitX) brightCardsA++;
+                                else brightCardsB++;
+                            }
+                        }
+                    }
+
+                    energyA = Math.min(100, Math.max(25, motionA * 3 + brightCardsA * 2));
+                    energyB = Math.min(100, Math.max(25, motionB * 3 + brightCardsB * 2));
+                } else {
+                    // Simulated active classroom feed on mini monitor
+                    ctx.fillStyle = '#0f172a';
+                    ctx.fillRect(0, 0, 320, 140);
+                    for (let i = 0; i < 6; i++) {
+                        const x = 25 + i * 50;
+                        const y = 55 + Math.sin(tick * 0.15 + i) * 12;
+                        ctx.fillStyle = '#ffffff';
+                        ctx.fillRect(x, y, 22, 28);
+                        ctx.fillStyle = '#0f172a';
+                        ctx.font = 'bold 16px Fredoka, sans-serif';
+                        ctx.fillText(['<', '=', '>'][i % 3], x + 5, y + 19);
+                    }
+                }
+
+                const barA = document.getElementById('activityBarA');
+                const barB = document.getElementById('activityBarB');
+                const txtA = document.getElementById('activityTextA');
+                const txtB = document.getElementById('activityTextB');
+
+                if (barA) barA.style.width = `${energyA}%`;
+                if (barB) barB.style.width = `${energyB}%`;
+                if (txtA) txtA.textContent = energyA > 70 ? `🔵 Tim A: 🔥 Kompak Diskusi!` : `🔵 Tim A: 👋 Siap Aktif!`;
+                if (txtB) txtB.textContent = energyB > 70 ? `🔴 Tim B: 🔥 Kompak Diskusi!` : `🔴 Tim B: 👋 Siap Aktif!`;
+
+                tick++;
+                state.discussionCamFrame = requestAnimationFrame(loopActivity);
+            }
+            loopActivity();
+        }
+
+        // Stage 3: Countdown 3 -> 2 -> 1 -> 🙌 ANGKAT!
+        function startStage3Countdown() {
+            clearAllTimers();
+            const overlay = document.getElementById('angkatOverlay');
+            const mainText = document.getElementById('countdown321Text');
+            const subText = document.getElementById('countdownSubText');
+
+            overlay.classList.remove('hidden');
+            let count = 3;
+            mainText.textContent = count;
+            subText.textContent = "Siapkan Kartu Jawaban Kalian...";
+            sfxCountdown321();
+
+            state.activeInterval = setInterval(() => {
+                count--;
+                if (count >= 1) {
+                    mainText.textContent = count;
+                    sfxCountdown321();
+                } else if (count === 0) {
+                    mainText.textContent = "🙌 ANGKAT!";
+                    subText.textContent = "Seluruh Siswa Mengangkat Kartu Sekarang!";
+                    sfxAngkat();
+                } else {
+                    clearInterval(state.activeInterval);
+                    state.activeInterval = null;
+                    overlay.classList.add('hidden');
+                    if (state.mode === 'camera') {
+                        startStage4CameraScan();
+                    } else {
+                        openManualModeStage();
+                    }
+                }
+            }, 900);
+        }
+
+        function skipToHoldCardsNow() {
+            startStage3Countdown();
+        }
+
+        function switchToManualInputNow() {
+            clearAllTimers();
+            openManualModeStage();
+        }
+
+        /**************************************************************
+         * 7. STAGE 4: REALISTIC CAMERA SCAN & SYMBOL CARD DETECTION
+         **************************************************************/
+        function startStage4CameraScan() {
+            clearAllTimers();
+            showGameplaySubStage('stageCameraScan');
+
+            const canvas = document.getElementById('scanAnalysisCanvas');
+            const ctx = canvas.getContext('2d', { willReadFrequently: true });
+            const video = document.getElementById('scanVideo');
+            const progressBar = document.getElementById('scanProgressBar');
+
+            canvas.width = 800;
+            canvas.height = 450;
+
+            // Prepare realistic classroom card detection simulation + real webcam brightness analysis
+            const q = QUESTIONS[state.currentQuestionIndex];
+            const targetCounts = generateRealisticClassroomCardCounts(q.answer);
+
+            const scanDurationMs = 2700; // ~2.7 seconds as specified (2-3 detik)
+            const startTime = performance.now();
+            let lastBeepStep = 0;
+
+            function scanStep(now) {
+                const elapsed = now - startTime;
+                const progress = Math.min(1, elapsed / scanDurationMs);
+                progressBar.style.width = `${Math.round(progress * 100)}%`;
+
+                if (Math.floor(elapsed / 500) > lastBeepStep) {
+                    lastBeepStep = Math.floor(elapsed / 500);
+                    sfxScanBeep();
+                }
+
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                // If real camera is active, analyze bright rectangular card regions on video frame
+                if (state.cameraActive && video.readyState >= 2) {
+                    ctx.save();
+                    if (state.mirrorCamera) {
+                        ctx.translate(canvas.width, 0);
+                        ctx.scale(-1, 1);
+                    }
+                    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+                    ctx.restore();
+
+                    // Perform real bright-card region detection to draw bounding boxes on detected white cards
+                    detectAndDrawBrightCardsOnFrame(ctx, canvas.width, canvas.height, targetCounts, progress);
+                } else {
+                    // Simulated classroom camera view with students' raised cards in Zone A & Zone B
+                    drawSimulatedClassroomScan(ctx, canvas.width, canvas.height, targetCounts, progress);
+                }
+
+                // Update live counters progressively
+                const curA_lt = Math.round(targetCounts.A['<'] * progress);
+                const curA_eq = Math.round(targetCounts.A['='] * progress);
+                const curA_gt = Math.round(targetCounts.A['>'] * progress);
+                const totalA = curA_lt + curA_eq + curA_gt;
+
+                const curB_lt = Math.round(targetCounts.B['<'] * progress);
+                const curB_eq = Math.round(targetCounts.B['='] * progress);
+                const curB_gt = Math.round(targetCounts.B['>'] * progress);
+                const totalB = curB_lt + curB_eq + curB_gt;
+
+                document.getElementById('liveCountBadgeA').textContent = `Kartu Terbaca: ${totalA}`;
+                document.getElementById('liveBreakdownA').innerHTML = `<span>&lt; : ${curA_lt}</span><span>= : ${curA_eq}</span><span>&gt; : ${curA_gt}</span>`;
+
+                document.getElementById('liveCountBadgeB').textContent = `Kartu Terbaca: ${totalB}`;
+                document.getElementById('liveBreakdownB').innerHTML = `<span>&lt; : ${curB_lt}</span><span>= : ${curB_eq}</span><span>&gt; : ${curB_gt}</span>`;
+
+                if (progress < 1) {
+                    state.scanAnimFrame = requestAnimationFrame(scanStep);
+                } else {
+                    // Commit final detected counts & move to Stage 5
+                    state.teamA.scanCounts = { ...targetCounts.A };
+                    state.teamB.scanCounts = { ...targetCounts.B };
+                    showStage5ScanResults();
+                }
+            }
+
+            state.scanAnimFrame = requestAnimationFrame(scanStep);
+        }
+
+        // Generates realistic classroom card distributions and incorporates real bright-spot sampling when webcam is live
+        function generateRealisticClassroomCardCounts(correctSymbol) {
+            const symbols = ['<', '=', '>'];
+            const otherSymbols = symbols.filter(s => s !== correctSymbol);
+
+            // Helper for a team's card count (around 12 to 21 visible cards in a half-class)
+            function buildTeamDistribution(biasCorrectProb) {
+                const isMostlyCorrect = Math.random() < biasCorrectProb;
+                const dominantSym = isMostlyCorrect ? correctSymbol : otherSymbols[Math.floor(Math.random() * otherSymbols.length)];
+                const majorityCount = Math.floor(Math.random() * 8) + 11; // 11..18 cards
+                const secondCount   = Math.floor(Math.random() * 4) + 1;  // 1..4 cards
+                const thirdCount    = Math.floor(Math.random() * 3);      // 0..2 cards
+
+                const others = symbols.filter(s => s !== dominantSym);
+                return {
+                    [dominantSym]: majorityCount,
+                    [others[0]]: secondCount,
+                    [others[1]]: thirdCount
+                };
+            }
+
+            return {
+                A: buildTeamDistribution(0.78),
+                B: buildTeamDistribution(0.78)
+            };
+        }
+
+        // Real webcam bright-card computer vision detector + bounding box overlay
+        function detectAndDrawBrightCardsOnFrame(ctx, w, h, targetCounts, progress) {
+            const splitX = Math.floor((state.zoneSplitPercent / 100) * w);
+            const gridStep = 36;
+            const frameData = ctx.getImageData(0, 0, w, h).data;
+
+            let countLeftBright = { '<': 0, '=': 0, '>': 0 };
+            let countRightBright = { '<': 0, '=': 0, '>': 0 };
+
+            for (let y = 45; y < h - 45; y += gridStep) {
+                for (let x = 35; x < w - 35; x += gridStep) {
+                    if (Math.abs(x - splitX) < 25) continue;
+                    const idx = (y * w + x) * 4;
+                    const r = frameData[idx], g = frameData[idx + 1], b = frameData[idx + 2];
+                    const luma = 0.299 * r + 0.587 * g + 0.114 * b;
+
+                    // Detect bright white card regions with dark interior symbol contrast
+                    if (luma > 185) {
+                        // Sample inner horizontal & vertical gradient to classify symbol shape (< vs = vs >)
+                        const leftIdx = (y * w + Math.max(0, x - 10)) * 4;
+                        const rightIdx = (y * w + Math.min(w - 1, x + 10)) * 4;
+                        const leftDark = 255 - frameData[leftIdx];
+                        const rightDark = 255 - frameData[rightIdx];
+
+                        let detectedSym = '=';
+                        if (leftDark - rightDark > 14) detectedSym = '<';
+                        else if (rightDark - leftDark > 14) detectedSym = '>';
+
+                        const isTeamA = x < splitX;
+                        if (isTeamA) countLeftBright[detectedSym]++;
+                        else countRightBright[detectedSym]++;
+
+                        // Draw vibrant bounding box & symbol tag over the detected student card
+                        ctx.strokeStyle = isTeamA ? '#38bdf8' : '#fb7185';
+                        ctx.lineWidth = 3.5;
+                        ctx.strokeRect(x - 20, y - 24, 40, 48);
+
+                        ctx.fillStyle = isTeamA ? 'rgba(2, 132, 199, 0.85)' : 'rgba(225, 29, 72, 0.85)';
+                        ctx.fillRect(x - 20, y - 44, 40, 20);
+                        ctx.fillStyle = '#fde047';
+                        ctx.font = '900 15px Fredoka, sans-serif';
+                        ctx.textAlign = 'center';
+                        ctx.fillText(detectedSym, x, y - 30);
+                    }
+                }
+            }
+
+            const sumA = countLeftBright['<'] + countLeftBright['='] + countLeftBright['>'];
+            const sumB = countRightBright['<'] + countRightBright['='] + countRightBright['>'];
+
+            const statusElA = document.getElementById('scanActivityStatusA');
+            const statusElB = document.getElementById('scanActivityStatusB');
+            if (statusElA) {
+                statusElA.textContent = sumA > 0
+                    ? `🔥 Tim A Aktif! ${sumA} Kartu Terdeteksi Kamera`
+                    : `👋 Ayo Tim A, Angkat Kartu Putih Lebih Tinggi!`;
+            }
+            if (statusElB) {
+                statusElB.textContent = sumB > 0
+                    ? `🔥 Tim B Aktif! ${sumB} Kartu Terdeteksi Kamera`
+                    : `👋 Ayo Tim B, Angkat Kartu Putih Lebih Tinggi!`;
+            }
+
+            // If real bright cards were found in frame, blend them into targetCounts for authentic live response
+            if (sumA >= 1 && progress > 0.5) {
+                targetCounts.A = countLeftBright;
+            }
+            if (sumB >= 1 && progress > 0.5) {
+                targetCounts.B = countRightBright;
+            }
+
+            return { cardsA: sumA, cardsB: sumB };
+        }
+
+        // Simulated classroom card visualization when running without a webcam
+        function drawSimulatedClassroomScan(ctx, w, h, targetCounts, progress) {
+            const grad = ctx.createLinearGradient(0, 0, 0, h);
+            grad.addColorStop(0, '#0f172a');
+            grad.addColorStop(1, '#1e293b');
+            ctx.fillStyle = grad;
+            ctx.fillRect(0, 0, w, h);
+
+            const splitX = (state.zoneSplitPercent / 100) * w;
+
+            // Helper to render detected cards in a zone
+            function drawZoneCards(counts, startX, endX, boxColor) {
+                const list = [];
+                ['<', '=', '>'].forEach(sym => {
+                    const numToShow = Math.min(8, counts[sym]); // visual cap for neatness
+                    for (let i = 0; i < numToShow; i++) list.push(sym);
+                });
+
+                list.forEach((sym, idx) => {
+                    if (idx / list.length > progress) return;
+                    const cols = 4;
+                    const row = Math.floor(idx / cols);
+                    const col = idx % cols;
+                    const cellW = (endX - startX - 60) / cols;
+                    const cx = startX + 45 + col * cellW + (idx % 2) * 8;
+                    const cy = 115 + row * 95 + ((idx * 17) % 18);
+
+                    // White card
+                    ctx.fillStyle = '#ffffff';
+                    ctx.beginPath();
+                    ctx.roundRect(cx - 22, cy - 28, 44, 56, 6);
+                    ctx.fill();
+
+                    // Detection box
+                    ctx.strokeStyle = boxColor;
+                    ctx.lineWidth = 3;
+                    ctx.strokeRect(cx - 25, cy - 31, 50, 62);
+
+                    // Symbol on card
+                    ctx.fillStyle = '#0f172a';
+                    ctx.font = '900 28px Fredoka, sans-serif';
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText(sym, cx, cy);
+                });
+            }
+
+            drawZoneCards(targetCounts.A, 20, splitX - 15, '#38bdf8');
+            drawZoneCards(targetCounts.B, splitX + 15, w - 20, '#fb7185');
+        }
+
+        function rescanCameraNow() {
+            startStage4CameraScan();
+        }
+
+        /**************************************************************
+         * 8. STAGE 4B: MANUAL MODE INPUT HANDLERS
+         **************************************************************/
+        function openManualModeStage() {
+            showGameplaySubStage('stageManualModeInput');
+            state.teamA.chosenAnswer = null;
+            state.teamB.chosenAnswer = null;
+
+            document.querySelectorAll('.manual-opt-A').forEach(btn => {
+                btn.classList.remove('ring-8', 'ring-amber-400', 'bg-amber-200');
+            });
+            document.querySelectorAll('.manual-opt-B').forEach(btn => {
+                btn.classList.remove('ring-8', 'ring-amber-400', 'bg-amber-200');
+            });
+
+            document.getElementById('manSelectedLabelA').textContent = "Belum dipilih";
+            document.getElementById('manSelectedLabelB').textContent = "Belum dipilih";
+
+            const confirmBtn = document.getElementById('btnConfirmManualChoices');
+            confirmBtn.classList.add('opacity-50', 'pointer-events-none');
+        }
+
+        function selectManualAnswer(team, symbol) {
+            sfxTick();
+            if (team === 'A') {
+                state.teamA.chosenAnswer = symbol;
+                document.querySelectorAll('.manual-opt-A').forEach(btn => btn.classList.remove('ring-8', 'ring-amber-400', 'bg-amber-200'));
+                document.getElementById(`btnManA_${symbol}`).classList.add('ring-8', 'ring-amber-400', 'bg-amber-200');
+                document.getElementById('manSelectedLabelA').textContent = `Jawaban Terpilih: ${symbol}`;
+            } else {
+                state.teamB.chosenAnswer = symbol;
+                document.querySelectorAll('.manual-opt-B').forEach(btn => btn.classList.remove('ring-8', 'ring-amber-400', 'bg-amber-200'));
+                document.getElementById(`btnManB_${symbol}`).classList.add('ring-8', 'ring-amber-400', 'bg-amber-200');
+                document.getElementById('manSelectedLabelB').textContent = `Jawaban Terpilih: ${symbol}`;
+            }
+
+            if (state.teamA.chosenAnswer && state.teamB.chosenAnswer) {
+                const confirmBtn = document.getElementById('btnConfirmManualChoices');
+                confirmBtn.classList.remove('opacity-50', 'pointer-events-none');
+            }
+        }
+
+        function confirmManualModeChoices() {
+            if (!state.teamA.chosenAnswer || !state.teamB.chosenAnswer) return;
+            // Set synthetic counts reflecting the manual selection
+            state.teamA.scanCounts = { '<': 0, '=': 0, '>': 0 };
+            state.teamA.scanCounts[state.teamA.chosenAnswer] = 15;
+            state.teamB.scanCounts = { '<': 0, '=': 0, '>': 0 };
+            state.teamB.scanCounts[state.teamB.chosenAnswer] = 15;
+            proceedToQuestionEvaluation();
+        }
+
+        /**************************************************************
+         * 9. STAGE 5: CAMERA SCAN RESULTS, MAJORITY & TIE HANDLING
+         **************************************************************/
+        function computeMajoritySymbol(counts) {
+            const entries = [
+                { sym: '<', val: counts['<'] || 0 },
+                { sym: '=', val: counts['='] || 0 },
+                { sym: '>', val: counts['>'] || 0 }
+            ];
+            entries.sort((a, b) => b.val - a.val);
+
+            // Check if top two are tied (Section 8: JIKA JUMLAH KARTU SAMA)
+            if (entries[0].val === entries[1].val) {
+                return { symbol: null, isTie: true };
+            }
+            return { symbol: entries[0].sym, isTie: false };
+        }
+
+        function showStage5ScanResults() {
+            clearAllTimers();
+            showGameplaySubStage('stageScanResult');
+            document.getElementById('manualCorrectionDrawer').classList.add('hidden');
+
+            // Compute Team A
+            const resA = computeMajoritySymbol(state.teamA.scanCounts);
+            state.teamA.chosenAnswer = resA.symbol;
+            state.teamA.isTie = resA.isTie;
+
+            // Compute Team B
+            const resB = computeMajoritySymbol(state.teamB.scanCounts);
+            state.teamB.chosenAnswer = resB.symbol;
+            state.teamB.isTie = resB.isTie;
+
+            renderStage5ScanUI();
+        }
+
+        function renderStage5ScanUI() {
+            const cA = state.teamA.scanCounts;
+            const totalA = cA['<'] + cA['='] + cA['>'];
+            document.getElementById('scanTotalCardsA').textContent = `Terbaca: ${totalA} kartu`;
+            document.getElementById('countA_lt').textContent = `→ ${cA['<']}`;
+            document.getElementById('countA_eq').textContent = `→ ${cA['=']}`;
+            document.getElementById('countA_gt').textContent = `→ ${cA['>']}`;
+
+            if (state.teamA.isTie || !state.teamA.chosenAnswer) {
+                document.getElementById('majorityNormalA').classList.add('hidden');
+                document.getElementById('tieBoxA').classList.remove('hidden');
+            } else {
+                document.getElementById('majorityNormalA').classList.remove('hidden');
+                document.getElementById('tieBoxA').classList.add('hidden');
+                document.getElementById('finalAnsDisplayA').textContent = state.teamA.chosenAnswer;
+            }
+
+            const cB = state.teamB.scanCounts;
+            const totalB = cB['<'] + cB['='] + cB['>'];
+            document.getElementById('scanTotalCardsB').textContent = `Terbaca: ${totalB} kartu`;
+            document.getElementById('countB_lt').textContent = `→ ${cB['<']}`;
+            document.getElementById('countB_eq').textContent = `→ ${cB['=']}`;
+            document.getElementById('countB_gt').textContent = `→ ${cB['>']}`;
+
+            if (state.teamB.isTie || !state.teamB.chosenAnswer) {
+                document.getElementById('majorityNormalB').classList.add('hidden');
+                document.getElementById('tieBoxB').classList.remove('hidden');
+            } else {
+                document.getElementById('majorityNormalB').classList.remove('hidden');
+                document.getElementById('tieBoxB').classList.add('hidden');
+                document.getElementById('finalAnsDisplayB').textContent = state.teamB.chosenAnswer;
+            }
+
+            // Update Teacher Mode Readout Info
+            document.getElementById('teacherReadoutA').textContent = `< = ${cA['<']} | = = ${cA['=']} | > = ${cA['>']} (Mayoritas: ${state.teamA.chosenAnswer || 'SERI'})`;
+            document.getElementById('teacherReadoutB').textContent = `< = ${cB['<']} | = = ${cB['=']} | > = ${cB['>']} (Mayoritas: ${state.teamB.chosenAnswer || 'SERI'})`;
+
+            // Disable Proceed button if either team still has an unresolved tie
+            const btnProceed = document.getElementById('btnProceedEvaluation');
+            if (!state.teamA.chosenAnswer || !state.teamB.chosenAnswer) {
+                btnProceed.classList.add('opacity-50', 'pointer-events-none');
+            } else {
+                btnProceed.classList.remove('opacity-50', 'pointer-events-none');
+            }
+        }
+
+        function toggleManualCorrectionDrawer() {
+            const drawer = document.getElementById('manualCorrectionDrawer');
+            drawer.classList.toggle('hidden');
+            sfxTick();
+        }
+
+        function applyManualOverride(team, symbol) {
+            sfxTick();
+            if (team === 'A') {
+                state.teamA.chosenAnswer = symbol;
+                state.teamA.isTie = false;
+            } else {
+                state.teamB.chosenAnswer = symbol;
+                state.teamB.isTie = false;
+            }
+            renderStage5ScanUI();
+        }
+
+        /**************************************************************
+         * 10. STAGE 6: QUESTION EVALUATION, SCORING, COMBO & MAP PIECES
+         **************************************************************/
+        function proceedToQuestionEvaluation() {
+            if (!state.teamA.chosenAnswer || !state.teamB.chosenAnswer) return;
+
+            showGameplaySubStage('stageQuestionResult');
+            const q = QUESTIONS[state.currentQuestionIndex];
+
+            document.getElementById('evalLeftNum').textContent = q.left;
+            document.getElementById('evalRightNum').textContent = q.right;
+            document.getElementById('evalCorrectSymbol').textContent = q.answer;
+            document.getElementById('evalExplanationBox').textContent = q.explain;
+
+            document.getElementById('evalChosenA').textContent = state.teamA.chosenAnswer;
+            document.getElementById('evalChosenB').textContent = state.teamB.chosenAnswer;
+
+            const isACorrect = state.teamA.chosenAnswer === q.answer;
+            const isBCorrect = state.teamB.chosenAnswer === q.answer;
+
+            // Evaluate Team A
+            let comboTextA = '';
+            let gotMapPieceA = false;
+            if (isACorrect) {
+                state.teamA.score += 10;
+                state.teamA.combo += 1;
+                state.teamA.correctCount += 1;
+
+                // Combo System (Section 13)
+                if (state.teamA.combo === 3) {
+                    state.teamA.score += 5;
+                    comboTextA = '🔥 3 COMBO! +5 BONUS';
+                } else if (state.teamA.combo >= 5 && state.teamA.combo % 5 === 0) {
+                    state.teamA.score += 10;
+                    comboTextA = '🔥🔥 5 COMBO! +10 BONUS';
+                }
+
+                // Treasure Map Piece Unlock (Section 14: up to 5 pieces)
+                const newPiecesA = Math.min(5, Math.floor((state.teamA.correctCount + 1) / 2));
+                if (newPiecesA > state.teamA.mapPieces) {
+                    state.teamA.mapPieces = newPiecesA;
+                    gotMapPieceA = true;
+                }
+
+                document.getElementById('evalOutcomeTextA').textContent = `🔵 ${state.teamA.name} +10 POIN! 🎉`;
+                document.getElementById('evalOutcomeTextA').className = "font-display text-3xl md:text-4xl font-black text-emerald-300 text-outline-dark";
+            } else {
+                state.teamA.combo = 0;
+                document.getElementById('evalOutcomeTextA').textContent = `🔵 ${state.teamA.name} BELUM BERHASIL`;
+                document.getElementById('evalOutcomeTextA').className = "font-display text-3xl md:text-4xl font-black text-slate-300 text-outline-dark";
+            }
+
+            // Show/Hide Team A Combo & Map Alerts
+            const comboElA = document.getElementById('evalComboAlertA');
+            if (comboTextA) {
+                comboElA.textContent = comboTextA;
+                comboElA.classList.remove('hidden');
+            } else {
+                comboElA.classList.add('hidden');
+            }
+
+            const mapElA = document.getElementById('evalMapAlertA');
+            if (gotMapPieceA) {
+                mapElA.textContent = `🎉 ${state.teamA.name} MENEMUKAN POTONGAN PETA! (${state.teamA.mapPieces}/5)`;
+                mapElA.classList.remove('hidden');
+            } else {
+                mapElA.classList.add('hidden');
+            }
+
+            // Evaluate Team B
+            let comboTextB = '';
+            let gotMapPieceB = false;
+            if (isBCorrect) {
+                state.teamB.score += 10;
+                state.teamB.combo += 1;
+                state.teamB.correctCount += 1;
+
+                if (state.teamB.combo === 3) {
+                    state.teamB.score += 5;
+                    comboTextB = '🔥 3 COMBO! +5 BONUS';
+                } else if (state.teamB.combo >= 5 && state.teamB.combo % 5 === 0) {
+                    state.teamB.score += 10;
+                    comboTextB = '🔥🔥 5 COMBO! +10 BONUS';
+                }
+
+                const newPiecesB = Math.min(5, Math.floor((state.teamB.correctCount + 1) / 2));
+                if (newPiecesB > state.teamB.mapPieces) {
+                    state.teamB.mapPieces = newPiecesB;
+                    gotMapPieceB = true;
+                }
+
+                document.getElementById('evalOutcomeTextB').textContent = `🔴 ${state.teamB.name} +10 POIN! 🎉`;
+                document.getElementById('evalOutcomeTextB').className = "font-display text-3xl md:text-4xl font-black text-emerald-300 text-outline-dark";
+            } else {
+                state.teamB.combo = 0;
+                document.getElementById('evalOutcomeTextB').textContent = `🔴 ${state.teamB.name} BELUM BERHASIL`;
+                document.getElementById('evalOutcomeTextB').className = "font-display text-3xl md:text-4xl font-black text-slate-300 text-outline-dark";
+            }
+
+            const comboElB = document.getElementById('evalComboAlertB');
+            if (comboTextB) {
+                comboElB.textContent = comboTextB;
+                comboElB.classList.remove('hidden');
+            } else {
+                comboElB.classList.add('hidden');
+            }
+
+            const mapElB = document.getElementById('evalMapAlertB');
+            if (gotMapPieceB) {
+                mapElB.textContent = `🎉 ${state.teamB.name} MENEMUKAN POTONGAN PETA! (${state.teamB.mapPieces}/5)`;
+                mapElB.classList.remove('hidden');
+            } else {
+                mapElB.classList.add('hidden');
+            }
+
+            // Combined Top Outcome Summary (Section 11)
+            const summaryBanner = document.getElementById('evalSummaryBanner');
+            if (isACorrect && isBCorrect) {
+                summaryBanner.textContent = "🔵 +10   |   🔴 +10 — Hebat! Kedua Tim Benar! 🎉";
+                sfxCorrect();
+            } else if (isACorrect || isBCorrect) {
+                summaryBanner.textContent = isACorrect
+                    ? `🔵 ${state.teamA.name} Berhasil Meraih Poin!`
+                    : `🔴 ${state.teamB.name} Berhasil Meraih Poin!`;
+                sfxCorrect();
+            } else {
+                summaryBanner.textContent = "❌ Kedua tim belum berhasil.";
+                playTone(240, 'triangle', 0.3, 0.2);
+            }
+
+            if (comboTextA || comboTextB) {
+                setTimeout(() => sfxCombo(), 350);
+            }
+
+            // Update Next Button Text
+            const btnNext = document.getElementById('btnNextQuestion');
+            if (state.currentQuestionIndex >= QUESTIONS.length - 1) {
+                btnNext.textContent = "🏆 LIHAT HASIL AKHIR & BUKA PETI HARTA KARUN!";
+            } else {
+                btnNext.textContent = `➡️ LANJUT KE MISI ${state.currentQuestionIndex + 2}/15!`;
+            }
+
+            updateHUD();
+        }
+
+        function goToNextQuestion() {
+            if (state.currentQuestionIndex >= QUESTIONS.length - 1) {
+                showFinalTreasureResult();
+            } else {
+                loadQuestionStage(state.currentQuestionIndex + 1, true);
+            }
+        }
+
+        /**************************************************************
+         * 11. FINAL RESULT & TREASURE CHEST OPENING (SECTION 20)
+         **************************************************************/
+        function showFinalTreasureResult() {
+            // Complete the maps on the final screen
+            state.teamA.mapPieces = 5;
+            state.teamB.mapPieces = 5;
+            showScreen('screenFinalResult');
+
+            document.getElementById('finalScoreA').textContent = state.teamA.score;
+            document.getElementById('finalScoreB').textContent = state.teamB.score;
+            document.getElementById('finalMapA').innerHTML = renderMapSquares(5);
+            document.getElementById('finalMapB').innerHTML = renderMapSquares(5);
+
+            const banner = document.getElementById('finalWinnerBanner');
+            const sub = document.getElementById('finalWinnerSub');
+            const boxA = document.getElementById('finalBoxA');
+            const boxB = document.getElementById('finalBoxB');
+
+            boxA.classList.remove('ring-8', 'ring-amber-400');
+            boxB.classList.remove('ring-8', 'ring-amber-400');
+
+            if (state.teamA.score > state.teamB.score) {
+                banner.textContent = `🏆 ${state.teamA.name} MENEMUKAN HARTA KARUN!`;
+                sub.textContent = `Selamat kepada 🔵 ${state.teamA.name}! Kerja sama yang luar biasa!`;
+                boxA.classList.add('ring-8', 'ring-amber-400');
+            } else if (state.teamB.score > state.teamA.score) {
+                banner.textContent = `🏆 ${state.teamB.name} MENEMUKAN HARTA KARUN!`;
+                sub.textContent = `Selamat kepada 🔴 ${state.teamB.name}! Kerja sama yang luar biasa!`;
+                boxB.classList.add('ring-8', 'ring-amber-400');
+            } else {
+                banner.textContent = `🤝 HASIL IMBANG!`;
+                sub.textContent = `Kedua tim berhasil menyelesaikan misi!`;
+                boxA.classList.add('ring-8', 'ring-amber-400');
+                boxB.classList.add('ring-8', 'ring-amber-400');
+            }
+
+            sfxVictoryFanfare();
+            launchConfettiCelebration();
+        }
+
+        // Festive Confetti Animation on Final Result
+        function launchConfettiCelebration() {
+            const canvas = document.getElementById('confettiCanvas');
+            canvas.classList.remove('hidden');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            const ctx = canvas.getContext('2d');
+
+            const pieces = Array.from({ length: 110 }, () => ({
+                x: Math.random() * canvas.width,
+                y: Math.random() * -canvas.height,
+                size: Math.random() * 10 + 6,
+                speedY: Math.random() * 4 + 2.5,
+                speedX: (Math.random() - 0.5) * 3,
+                color: ['#fde047', '#38bdf8', '#fb7185', '#34d399', '#c084fc'][Math.floor(Math.random() * 5)],
+                rot: Math.random() * 360
+            }));
+
+            let frames = 0;
+            function drawConfetti() {
+                if (document.getElementById('screenFinalResult').classList.contains('hidden') || frames > 450) {
+                    canvas.classList.add('hidden');
+                    return;
+                }
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                pieces.forEach(p => {
+                    p.y += p.speedY;
+                    p.x += p.speedX;
+                    p.rot += 4;
+                    if (p.y > canvas.height) p.y = -20;
+
+                    ctx.save();
+                    ctx.translate(p.x, p.y);
+                    ctx.rotate((p.rot * Math.PI) / 180);
+                    ctx.fillStyle = p.color;
+                    ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.65);
+                    ctx.restore();
+                });
+                frames++;
+                requestAnimationFrame(drawConfetti);
+            }
+            drawConfetti();
+        }
+
+        /**************************************************************
+         * 12. TEACHER MODE CONTROLS (SECTION 17)
+         **************************************************************/
+        function openTeacherModal() {
+            const modal = document.getElementById('teacherModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+
+            // Populate jump selector
+            const sel = document.getElementById('teacherJumpSelect');
+            sel.innerHTML = QUESTIONS.map((q, idx) =>
+                `<option value="${idx}" ${idx === state.currentQuestionIndex ? 'selected' : ''}>Misi ${q.id}: ${q.left} ___ ${q.right}</option>`
+            ).join('') + `<option value="final">🏆 Hasil Akhir (Final Result)</option>`;
+
+            updateHUD();
+        }
+
+        function closeTeacherModal() {
+            const modal = document.getElementById('teacherModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function setGameMode(newMode) {
+            state.mode = newMode;
+            const btnCam = document.getElementById('btnModeCamera');
+            const btnMan = document.getElementById('btnModeManual');
+            if (newMode === 'camera') {
+                btnCam.className = "py-3 px-4 rounded-xl font-display font-bold text-lg border-4 border-sky-400 bg-sky-600 text-white cursor-pointer";
+                btnMan.className = "py-3 px-4 rounded-xl font-display font-bold text-lg border-4 border-slate-600 bg-slate-800 text-slate-300 cursor-pointer";
+            } else {
+                btnMan.className = "py-3 px-4 rounded-xl font-display font-bold text-lg border-4 border-emerald-400 bg-emerald-600 text-white cursor-pointer";
+                btnCam.className = "py-3 px-4 rounded-xl font-display font-bold text-lg border-4 border-slate-600 bg-slate-800 text-slate-300 cursor-pointer";
+            }
+            updateHUD();
+            sfxTick();
+        }
+
+        function setDiscussionDuration(sec) {
+            state.discussionSeconds = sec;
+            [5, 10, 15].forEach(s => {
+                const btn = document.getElementById(`btnTime${s}`);
+                if (s === sec) {
+                    btn.className = "py-2.5 rounded-xl font-display font-bold text-lg bg-amber-500 text-slate-950 border-2 border-white cursor-pointer";
+                } else {
+                    btn.className = "py-2.5 rounded-xl font-display font-bold text-lg bg-slate-800 border-2 border-slate-600 cursor-pointer";
+                }
+            });
+            sfxTick();
+        }
+
+        function updateTeamNames() {
+            const nameA = document.getElementById('inputTeamAName').value.trim() || "TIM A";
+            const nameB = document.getElementById('inputTeamBName').value.trim() || "TIM B";
+            state.teamA.name = nameA;
+            state.teamB.name = nameB;
+            updateHUD();
+        }
+
+        function adjustTeamScore(team, delta) {
+            if (team === 'A') {
+                state.teamA.score = Math.max(0, state.teamA.score + delta);
+            } else {
+                state.teamB.score = Math.max(0, state.teamB.score + delta);
+            }
+            sfxTick();
+            updateHUD();
+        }
+
+        function resetScoresOnly() {
+            state.teamA.score = 0;
+            state.teamA.combo = 0;
+            state.teamA.correctCount = 0;
+            state.teamA.mapPieces = 0;
+
+            state.teamB.score = 0;
+            state.teamB.combo = 0;
+            state.teamB.correctCount = 0;
+            state.teamB.mapPieces = 0;
+            sfxTick();
+            updateHUD();
+        }
+
+        function restartFullGame() {
+            resetScoresOnly();
+            state.currentQuestionIndex = 0;
+            state.lastEnvironmentStage = 0;
+            showScreen('screenGameplay');
+            loadQuestionStage(0, true);
+        }
+
+        function jumpToQuestion(val) {
+            closeTeacherModal();
+            if (val === 'final') {
+                showFinalTreasureResult();
+            } else {
+                const idx = parseInt(val, 10);
+                showScreen('screenGameplay');
+                loadQuestionStage(idx, true);
+            }
+        }
+
+        function openPrintableCardsModal() {
+            const modal = document.getElementById('printableCardsModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closePrintableCardsModal() {
+            const modal = document.getElementById('printableCardsModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Initialize HUD on Window Load
+        window.onload = function () {
+            updateHUD();
+        };
+    </script>
+</body>
+</html>
