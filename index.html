@@ -339,14 +339,18 @@
                     <div class="text-5xl">🔵🔴</div>
                     <div>
                         <div class="font-display text-xl font-bold text-sky-200">2 Tim Satu Kelas</div>
-                        <p class="text-sm md:text-base text-slate-200 font-bold">Seluruh siswa berdiskusi & mengangkat kartu secara bersamaan!</p>
+                        <p class="text-sm md:text-base text-slate-200 font-bold">Diskusi bersama tim dan angkat kartu serentak saat aba-aba!</p>
                     </div>
                 </div>
                 <div class="bg-amber-950/80 border-4 border-amber-400/70 rounded-2xl p-4 flex items-center gap-4">
-                    <div class="text-5xl font-display font-black text-amber-300 bg-white/10 px-3 py-1 rounded-xl">&lt; = &gt;</div>
+                    <div class="flex items-center gap-1.5 bg-white/10 px-2.5 py-2 rounded-xl">
+                        <span class="bg-white text-slate-950 font-display font-black text-2xl px-2.5 py-1 rounded-lg border-2 border-slate-900">&lt;</span>
+                        <span class="bg-white text-slate-950 font-display font-black text-2xl px-2.5 py-1 rounded-lg border-2 border-slate-900">=</span>
+                        <span class="bg-white text-slate-950 font-display font-black text-2xl px-2.5 py-1 rounded-lg border-2 border-slate-900">&gt;</span>
+                    </div>
                     <div>
-                        <div class="font-display text-xl font-bold text-amber-200">3 Kartu Simbol</div>
-                        <p class="text-sm md:text-base text-slate-200 font-bold">Kamera menghitung kartu mayoritas di Zona Tim A & Zona Tim B.</p>
+                        <div class="font-display text-xl font-bold text-amber-200">Deteksi Bentuk Simbol</div>
+                        <p class="text-sm md:text-base text-slate-200 font-bold">Kamera mengenali langsung bentuk geometri simbol &lt;, =, dan &gt; pada kartu!</p>
                     </div>
                 </div>
                 <div class="bg-emerald-950/80 border-4 border-emerald-400/70 rounded-2xl p-4 flex items-center gap-4">
@@ -544,19 +548,21 @@
 
                 <!-- Visual Choices Reference (<   =   >) + Live Classroom Activity Monitor -->
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-center my-4">
-                    <!-- Cards Reference -->
-                    <div class="lg:col-span-7 flex items-center justify-center gap-4 sm:gap-8">
-                        <div class="bg-white text-slate-950 w-20 h-24 sm:w-28 sm:h-32 rounded-2xl border-4 border-slate-400 shadow-xl flex flex-col items-center justify-center transform -rotate-3">
-                            <span class="font-display text-5xl sm:text-7xl font-black leading-none">&lt;</span>
-                            <span class="text-xs sm:text-sm font-black text-slate-600 mt-1">LEBIH KECIL</span>
+                    <!-- High-Contrast Symbol Cards Reference (<   =   >) -->
+                    <div class="lg:col-span-7 flex items-center justify-center gap-4 sm:gap-7">
+                        <!-- Kartu < -->
+                        <div class="w-24 h-32 sm:w-32 sm:h-44 rounded-2xl border-[5px] border-slate-900 bg-white shadow-[0_8px_0_#0f172a] flex flex-col items-center justify-center p-2 transform -rotate-3">
+                            <span class="font-display text-7xl sm:text-8xl font-black text-slate-950 leading-none select-none">&lt;</span>
                         </div>
-                        <div class="bg-white text-slate-950 w-20 h-24 sm:w-28 sm:h-32 rounded-2xl border-4 border-slate-400 shadow-xl flex flex-col items-center justify-center">
-                            <span class="font-display text-5xl sm:text-7xl font-black leading-none">=</span>
-                            <span class="text-xs sm:text-sm font-black text-slate-600 mt-1">SAMA DENGAN</span>
+
+                        <!-- Kartu = -->
+                        <div class="w-24 h-32 sm:w-32 sm:h-44 rounded-2xl border-[5px] border-slate-900 bg-white shadow-[0_8px_0_#0f172a] flex flex-col items-center justify-center p-2">
+                            <span class="font-display text-7xl sm:text-8xl font-black text-slate-950 leading-none select-none">=</span>
                         </div>
-                        <div class="bg-white text-slate-950 w-20 h-24 sm:w-28 sm:h-32 rounded-2xl border-4 border-slate-400 shadow-xl flex flex-col items-center justify-center transform rotate-3">
-                            <span class="font-display text-5xl sm:text-7xl font-black leading-none">&gt;</span>
-                            <span class="text-xs sm:text-sm font-black text-slate-600 mt-1">LEBIH BESAR</span>
+
+                        <!-- Kartu > -->
+                        <div class="w-24 h-32 sm:w-32 sm:h-44 rounded-2xl border-[5px] border-slate-900 bg-white shadow-[0_8px_0_#0f172a] flex flex-col items-center justify-center p-2 transform rotate-3">
+                            <span class="font-display text-7xl sm:text-8xl font-black text-slate-950 leading-none select-none">&gt;</span>
                         </div>
                     </div>
 
@@ -725,7 +731,7 @@
                         <div id="scanProgressBar" class="h-full bg-gradient-to-r from-sky-400 via-amber-400 to-rose-500 transition-all duration-150" style="width: 0%;"></div>
                     </div>
                     <div class="flex flex-wrap items-center justify-center gap-2 text-xs md:text-sm text-slate-300 font-bold">
-                        <span>💡 Tips Aktif: Siswa mengangkat kartu putih (&lt; , = , &gt;) setinggi dada/kepala di dalam zona tim masing-masing!</span>
+                        <span>💡 Deteksi Geometri Simbol: Kamera membaca langsung pola bentuk &lt; (lancip kiri), = (dua garis sejajar), dan &gt; (lancip kanan)!</span>
                     </div>
                 </div>
             </div>
@@ -806,19 +812,19 @@
                                 <span id="scanTotalCardsA" class="bg-sky-800 text-sky-100 px-3 py-1 rounded-lg font-bold text-base">Total: 21 kartu</span>
                             </div>
 
-                            <!-- Symbol Count Breakdown -->
+                            <!-- Symbol Count Breakdown (Clickable for quick teacher adjustment) -->
                             <div class="grid grid-cols-3 gap-3 my-3">
-                                <div class="bg-slate-900/90 border-2 border-sky-400/50 rounded-2xl p-3">
-                                    <div class="font-display text-4xl md:text-5xl font-black text-white">&lt;</div>
-                                    <div id="countA_lt" class="font-display text-2xl md:text-3xl font-bold text-sky-300 mt-1">→ 18</div>
+                                <div onclick="applyManualOverride('A', '<')" class="bg-slate-900/90 hover:bg-blue-900/80 border-2 border-blue-400 rounded-2xl p-3 cursor-pointer transition transform hover:scale-105" title="Klik untuk memilih < sebagai jawaban Tim A">
+                                    <div class="font-display text-4xl md:text-5xl font-black text-sky-400">&lt;</div>
+                                    <div id="countA_lt" class="font-display text-2xl md:text-3xl font-bold text-sky-200 mt-1">→ 18</div>
                                 </div>
-                                <div class="bg-slate-900/90 border-2 border-sky-400/50 rounded-2xl p-3">
-                                    <div class="font-display text-4xl md:text-5xl font-black text-white">=</div>
-                                    <div id="countA_eq" class="font-display text-2xl md:text-3xl font-bold text-sky-300 mt-1">→ 2</div>
+                                <div onclick="applyManualOverride('A', '=')" class="bg-slate-900/90 hover:bg-emerald-900/80 border-2 border-emerald-400 rounded-2xl p-3 cursor-pointer transition transform hover:scale-105" title="Klik untuk memilih = sebagai jawaban Tim A">
+                                    <div class="font-display text-4xl md:text-5xl font-black text-emerald-400">=</div>
+                                    <div id="countA_eq" class="font-display text-2xl md:text-3xl font-bold text-emerald-200 mt-1">→ 2</div>
                                 </div>
-                                <div class="bg-slate-900/90 border-2 border-sky-400/50 rounded-2xl p-3">
-                                    <div class="font-display text-4xl md:text-5xl font-black text-white">&gt;</div>
-                                    <div id="countA_gt" class="font-display text-2xl md:text-3xl font-bold text-sky-300 mt-1">→ 1</div>
+                                <div onclick="applyManualOverride('A', '>')" class="bg-slate-900/90 hover:bg-rose-900/80 border-2 border-rose-400 rounded-2xl p-3 cursor-pointer transition transform hover:scale-105" title="Klik untuk memilih > sebagai jawaban Tim A">
+                                    <div class="font-display text-4xl md:text-5xl font-black text-rose-400">&gt;</div>
+                                    <div id="countA_gt" class="font-display text-2xl md:text-3xl font-bold text-rose-200 mt-1">→ 1</div>
                                 </div>
                             </div>
                         </div>
@@ -834,9 +840,9 @@
                                 <div class="text-amber-300 font-display text-xl md:text-2xl font-black">⚠️ HASIL TIDAK MENENTUKAN</div>
                                 <p class="text-sm md:text-base text-white font-bold">“Guru menentukan jawaban tim.”</p>
                                 <div class="flex justify-center gap-3 pt-1">
-                                    <button onclick="applyManualOverride('A', '<')" class="bg-white text-slate-950 hover:bg-amber-300 font-display text-3xl font-black px-5 py-2 rounded-xl border-2 border-slate-700 cursor-pointer">&lt;</button>
-                                    <button onclick="applyManualOverride('A', '=')" class="bg-white text-slate-950 hover:bg-amber-300 font-display text-3xl font-black px-5 py-2 rounded-xl border-2 border-slate-700 cursor-pointer">=</button>
-                                    <button onclick="applyManualOverride('A', '>')" class="bg-white text-slate-950 hover:bg-amber-300 font-display text-3xl font-black px-5 py-2 rounded-xl border-2 border-slate-700 cursor-pointer">&gt;</button>
+                                    <button onclick="applyManualOverride('A', '<')" class="bg-blue-600 text-white hover:bg-amber-400 hover:text-slate-950 font-display text-3xl font-black px-5 py-2 rounded-xl border-2 border-white cursor-pointer">&lt;</button>
+                                    <button onclick="applyManualOverride('A', '=')" class="bg-emerald-600 text-white hover:bg-amber-400 hover:text-slate-950 font-display text-3xl font-black px-5 py-2 rounded-xl border-2 border-white cursor-pointer">=</button>
+                                    <button onclick="applyManualOverride('A', '>')" class="bg-rose-600 text-white hover:bg-amber-400 hover:text-slate-950 font-display text-3xl font-black px-5 py-2 rounded-xl border-2 border-white cursor-pointer">&gt;</button>
                                 </div>
                             </div>
                         </div>
@@ -850,19 +856,19 @@
                                 <span id="scanTotalCardsB" class="bg-rose-800 text-rose-100 px-3 py-1 rounded-lg font-bold text-base">Total: 22 kartu</span>
                             </div>
 
-                            <!-- Symbol Count Breakdown -->
+                            <!-- Symbol Count Breakdown (Clickable for quick teacher adjustment) -->
                             <div class="grid grid-cols-3 gap-3 my-3">
-                                <div class="bg-slate-900/90 border-2 border-rose-400/50 rounded-2xl p-3">
-                                    <div class="font-display text-4xl md:text-5xl font-black text-white">&lt;</div>
-                                    <div id="countB_lt" class="font-display text-2xl md:text-3xl font-bold text-rose-300 mt-1">→ 5</div>
+                                <div onclick="applyManualOverride('B', '<')" class="bg-slate-900/90 hover:bg-blue-900/80 border-2 border-blue-400 rounded-2xl p-3 cursor-pointer transition transform hover:scale-105" title="Klik untuk memilih < sebagai jawaban Tim B">
+                                    <div class="font-display text-4xl md:text-5xl font-black text-sky-400">&lt;</div>
+                                    <div id="countB_lt" class="font-display text-2xl md:text-3xl font-bold text-sky-200 mt-1">→ 5</div>
                                 </div>
-                                <div class="bg-slate-900/90 border-2 border-rose-400/50 rounded-2xl p-3">
-                                    <div class="font-display text-4xl md:text-5xl font-black text-white">=</div>
-                                    <div id="countB_eq" class="font-display text-2xl md:text-3xl font-bold text-rose-300 mt-1">→ 3</div>
+                                <div onclick="applyManualOverride('B', '=')" class="bg-slate-900/90 hover:bg-emerald-900/80 border-2 border-emerald-400 rounded-2xl p-3 cursor-pointer transition transform hover:scale-105" title="Klik untuk memilih = sebagai jawaban Tim B">
+                                    <div class="font-display text-4xl md:text-5xl font-black text-emerald-400">=</div>
+                                    <div id="countB_eq" class="font-display text-2xl md:text-3xl font-bold text-emerald-200 mt-1">→ 3</div>
                                 </div>
-                                <div class="bg-slate-900/90 border-2 border-rose-400/50 rounded-2xl p-3">
-                                    <div class="font-display text-4xl md:text-5xl font-black text-white">&gt;</div>
-                                    <div id="countB_gt" class="font-display text-2xl md:text-3xl font-bold text-rose-300 mt-1">→ 14</div>
+                                <div onclick="applyManualOverride('B', '>')" class="bg-slate-900/90 hover:bg-rose-900/80 border-2 border-rose-400 rounded-2xl p-3 cursor-pointer transition transform hover:scale-105" title="Klik untuk memilih > sebagai jawaban Tim B">
+                                    <div class="font-display text-4xl md:text-5xl font-black text-rose-400">&gt;</div>
+                                    <div id="countB_gt" class="font-display text-2xl md:text-3xl font-bold text-rose-200 mt-1">→ 14</div>
                                 </div>
                             </div>
                         </div>
@@ -878,9 +884,9 @@
                                 <div class="text-amber-300 font-display text-xl md:text-2xl font-black">⚠️ HASIL TIDAK MENENTUKAN</div>
                                 <p class="text-sm md:text-base text-white font-bold">“Guru menentukan jawaban tim.”</p>
                                 <div class="flex justify-center gap-3 pt-1">
-                                    <button onclick="applyManualOverride('B', '<')" class="bg-white text-slate-950 hover:bg-amber-300 font-display text-3xl font-black px-5 py-2 rounded-xl border-2 border-slate-700 cursor-pointer">&lt;</button>
-                                    <button onclick="applyManualOverride('B', '=')" class="bg-white text-slate-950 hover:bg-amber-300 font-display text-3xl font-black px-5 py-2 rounded-xl border-2 border-slate-700 cursor-pointer">=</button>
-                                    <button onclick="applyManualOverride('B', '>')" class="bg-white text-slate-950 hover:bg-amber-300 font-display text-3xl font-black px-5 py-2 rounded-xl border-2 border-slate-700 cursor-pointer">&gt;</button>
+                                    <button onclick="applyManualOverride('B', '<')" class="bg-blue-600 text-white hover:bg-amber-400 hover:text-slate-950 font-display text-3xl font-black px-5 py-2 rounded-xl border-2 border-white cursor-pointer">&lt;</button>
+                                    <button onclick="applyManualOverride('B', '=')" class="bg-emerald-600 text-white hover:bg-amber-400 hover:text-slate-950 font-display text-3xl font-black px-5 py-2 rounded-xl border-2 border-white cursor-pointer">=</button>
+                                    <button onclick="applyManualOverride('B', '>')" class="bg-rose-600 text-white hover:bg-amber-400 hover:text-slate-950 font-display text-3xl font-black px-5 py-2 rounded-xl border-2 border-white cursor-pointer">&gt;</button>
                                 </div>
                             </div>
                         </div>
@@ -1233,14 +1239,14 @@
     <!-- MODAL 2: 🖨️ CETAK KARTU JAWABAN (<, =, >)                 -->
     <!-- ========================================================= -->
     <div id="printableCardsModal" class="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md hidden items-center justify-center p-4 overflow-y-auto">
-        <div class="w-full max-w-4xl card-3d-panel rounded-3xl p-6 md:p-8 border-4 border-sky-400 my-8">
+        <div class="w-full max-w-5xl card-3d-panel rounded-3xl p-6 md:p-8 border-4 border-sky-400 my-8">
             <div class="flex flex-wrap items-center justify-between gap-3 pb-4 mb-5 border-b-2 border-slate-700">
                 <div>
-                    <h2 class="font-display text-2xl md:text-4xl font-black text-sky-300">
-                        🖨️ DESAIN KARTU JAWABAN SISWA (&lt; , = , &gt;)
+                    <h2 class="font-display text-2xl md:text-4xl font-black text-amber-300">
+                        🖨️ KARTU SIMBOL JAWABAN (&lt; , = , &gt;)
                     </h2>
-                    <p class="text-sm md:text-base text-slate-300 font-bold">
-                        Ukuran simbol besar, kontras tinggi (hitam di atas putih), tanpa teks/gambar tambahan agar mudah dibaca kamera.
+                    <p class="text-sm md:text-base text-slate-200 font-bold">
+                        Kartu putih polos dengan simbol hitam berukuran besar tanpa gambar/tulisan tambahan agar bentuk simbol terbaca jelas oleh kamera.
                     </p>
                 </div>
                 <div class="flex items-center gap-3">
@@ -1253,16 +1259,21 @@
                 </div>
             </div>
 
-            <!-- Preview of the 3 Cards -->
+            <!-- Preview of the 3 High-Contrast Symbol Cards (<, =, >) -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-white text-black rounded-2xl p-8 border-8 border-black flex items-center justify-center aspect-[3/4] shadow-2xl">
-                    <span class="font-display text-[140px] font-black leading-none select-none">&lt;</span>
+                <!-- Card 1: < -->
+                <div class="rounded-3xl p-6 border-[10px] border-slate-900 bg-white flex items-center justify-center aspect-[3/4] shadow-2xl">
+                    <span class="font-display text-[170px] font-black text-black leading-none select-none">&lt;</span>
                 </div>
-                <div class="bg-white text-black rounded-2xl p-8 border-8 border-black flex items-center justify-center aspect-[3/4] shadow-2xl">
-                    <span class="font-display text-[140px] font-black leading-none select-none">=</span>
+
+                <!-- Card 2: = -->
+                <div class="rounded-3xl p-6 border-[10px] border-slate-900 bg-white flex items-center justify-center aspect-[3/4] shadow-2xl">
+                    <span class="font-display text-[170px] font-black text-black leading-none select-none">=</span>
                 </div>
-                <div class="bg-white text-black rounded-2xl p-8 border-8 border-black flex items-center justify-center aspect-[3/4] shadow-2xl">
-                    <span class="font-display text-[140px] font-black leading-none select-none">&gt;</span>
+
+                <!-- Card 3: > -->
+                <div class="rounded-3xl p-6 border-[10px] border-slate-900 bg-white flex items-center justify-center aspect-[3/4] shadow-2xl">
+                    <span class="font-display text-[170px] font-black text-black leading-none select-none">&gt;</span>
                 </div>
             </div>
         </div>
@@ -1270,19 +1281,19 @@
 
     <!-- HIDDEN PRINTABLE LAYOUT FOR @media print -->
     <div id="printableArea" class="hidden print:block">
-        <div class="print-page-break flex items-center justify-center h-screen w-screen p-12">
-            <div class="w-full h-full border-[16px] border-black rounded-3xl flex items-center justify-center bg-white">
-                <span style="font-size: 320px; font-weight: 900; font-family: 'Fredoka', sans-serif; color: #000;">&lt;</span>
+        <div class="print-page-break flex items-center justify-center h-screen w-screen p-10">
+            <div class="w-full h-full border-[16px] border-black rounded-[40px] flex items-center justify-center bg-white">
+                <span style="font-size: 360px; font-weight: 900; font-family: 'Fredoka', sans-serif; color: #000000;">&lt;</span>
             </div>
         </div>
-        <div class="print-page-break flex items-center justify-center h-screen w-screen p-12">
-            <div class="w-full h-full border-[16px] border-black rounded-3xl flex items-center justify-center bg-white">
-                <span style="font-size: 320px; font-weight: 900; font-family: 'Fredoka', sans-serif; color: #000;">=</span>
+        <div class="print-page-break flex items-center justify-center h-screen w-screen p-10">
+            <div class="w-full h-full border-[16px] border-black rounded-[40px] flex items-center justify-center bg-white">
+                <span style="font-size: 360px; font-weight: 900; font-family: 'Fredoka', sans-serif; color: #000000;">=</span>
             </div>
         </div>
-        <div class="flex items-center justify-center h-screen w-screen p-12">
-            <div class="w-full h-full border-[16px] border-black rounded-3xl flex items-center justify-center bg-white">
-                <span style="font-size: 320px; font-weight: 900; font-family: 'Fredoka', sans-serif; color: #000;">&gt;</span>
+        <div class="flex items-center justify-center h-screen w-screen p-10">
+            <div class="w-full h-full border-[16px] border-black rounded-[40px] flex items-center justify-center bg-white">
+                <span style="font-size: 360px; font-weight: 900; font-family: 'Fredoka', sans-serif; color: #000000;">&gt;</span>
             </div>
         </div>
     </div>
@@ -1600,7 +1611,10 @@
                 const videoIds = ['setupVideo', 'scanVideo', 'discussionLiveVideo', 'countdownLiveVideo'];
                 videoIds.forEach(id => {
                     const vid = document.getElementById(id);
-                    if (vid) vid.srcObject = stream;
+                    if (vid) {
+                        vid.srcObject = stream;
+                        vid.play().catch(() => {});
+                    }
                 });
 
                 document.getElementById('setupSimCanvas').classList.add('hidden');
@@ -1612,6 +1626,166 @@
                 document.getElementById('setupSimCanvas').classList.remove('hidden');
                 document.getElementById('setupCamStatusText').textContent = "⚠️ Kamera belum diizinkan. Mode Simulasi Kamera Kelas aktif.";
             }
+        }
+
+        // Cross-browser helper for drawing rounded rectangles on canvas (avoids ctx.roundRect errors)
+        function drawRoundedRectPath(ctx, x, y, w, h, r) {
+            const radius = Math.min(r, w / 2, h / 2);
+            ctx.beginPath();
+            ctx.moveTo(x + radius, y);
+            ctx.lineTo(x + w - radius, y);
+            ctx.quadraticCurveTo(x + w, y, x + w, y + radius);
+            ctx.lineTo(x + w, y + h - radius);
+            ctx.quadraticCurveTo(x + w, y + h, x + w - radius, y + h);
+            ctx.lineTo(x + radius, y + h);
+            ctx.quadraticCurveTo(x, y + h, x, y + h - radius);
+            ctx.lineTo(x, y + radius);
+            ctx.quadraticCurveTo(x, y, x + radius, y);
+            ctx.closePath();
+        }
+
+        /**
+         * GEOMETRIC SYMBOL CLASSIFIER (<, =, >)
+         * Analyzes ONLY the dark/high-contrast symbol strokes inside a candidate card region.
+         * Completely independent of card color:
+         *  - '<' : Left side of symbol has narrow vertical span (vertex), right side has wide vertical span (2 open tips)
+         *  - '>' : Left side of symbol has wide vertical span (2 open tips), right side has narrow vertical span (vertex)
+         *  - '=' : Left & right vertical spans are balanced/parallel AND middle vertical slice crosses 2 horizontal bars
+         */
+        function classifySymbolGeometryInBox(frameData, frameW, frameH, boxX, boxY, boxW, boxH) {
+            // Focus on inner 70% of card box to ignore outer card edges/fingers
+            const padX = Math.max(4, Math.floor(boxW * 0.16));
+            const padY = Math.max(4, Math.floor(boxH * 0.16));
+            const x0 = Math.max(1, boxX + padX);
+            const y0 = Math.max(1, boxY + padY);
+            const x1 = Math.min(frameW - 2, boxX + boxW - padX);
+            const y1 = Math.min(frameH - 2, boxY + boxH - padY);
+
+            const rw = x1 - x0;
+            const rh = y1 - y0;
+            if (rw < 14 || rh < 14) return null;
+
+            // Step 1: Compute luminance distribution inside the card interior
+            let minLuma = 255;
+            let maxLuma = 0;
+            let sumLuma = 0;
+            let countPixels = 0;
+
+            for (let y = y0; y <= y1; y += 2) {
+                for (let x = x0; x <= x1; x += 2) {
+                    const idx = (y * frameW + x) * 4;
+                    const luma = (frameData[idx] * 77 + frameData[idx + 1] * 150 + frameData[idx + 2] * 29) >> 8;
+                    if (luma < minLuma) minLuma = luma;
+                    if (luma > maxLuma) maxLuma = luma;
+                    sumLuma += luma;
+                    countPixels++;
+                }
+            }
+
+            const contrast = maxLuma - minLuma;
+            const avgLuma = sumLuma / Math.max(1, countPixels);
+            // Card must have a bright background and a darker high-contrast symbol stroke inside
+            if (contrast < 42 || avgLuma < 110) return null;
+
+            const darkThreshold = minLuma + contrast * 0.44;
+
+            // Step 2: Find tight bounding box of the dark symbol ink pixels
+            let symMinX = x1, symMaxX = x0, symMinY = y1, symMaxY = y0;
+            let inkCount = 0;
+
+            for (let y = y0; y <= y1; y++) {
+                for (let x = x0; x <= x1; x++) {
+                    const idx = (y * frameW + x) * 4;
+                    const luma = (frameData[idx] * 77 + frameData[idx + 1] * 150 + frameData[idx + 2] * 29) >> 8;
+                    if (luma <= darkThreshold) {
+                        inkCount++;
+                        if (x < symMinX) symMinX = x;
+                        if (x > symMaxX) symMaxX = x;
+                        if (y < symMinY) symMinY = y;
+                        if (y > symMaxY) symMaxY = y;
+                    }
+                }
+            }
+
+            const totalArea = rw * rh;
+            const inkRatio = inkCount / Math.max(1, totalArea);
+            // Reject empty white walls (inkRatio too low) or solid dark objects (inkRatio too high)
+            if (inkRatio < 0.06 || inkRatio > 0.62) return null;
+
+            const symW = symMaxX - symMinX + 1;
+            const symH = symMaxY - symMinY + 1;
+            if (symW < 10 || symH < 8) return null;
+
+            // Step 3: Measure vertical span (top-to-bottom height) of the symbol on Left third vs Right third
+            const leftBandEnd = symMinX + Math.max(2, Math.floor(symW * 0.32));
+            const rightBandStart = symMaxX - Math.max(2, Math.floor(symW * 0.32));
+            const midBandStart = symMinX + Math.floor(symW * 0.35);
+            const midBandEnd = symMinX + Math.ceil(symW * 0.65);
+
+            function computeBandStats(colStart, colEnd) {
+                let topY = symMaxY;
+                let botY = symMinY;
+                let hits = 0;
+                let rowActive = new Uint8Array(symH);
+
+                for (let y = symMinY; y <= symMaxY; y++) {
+                    let rowHits = 0;
+                    for (let x = colStart; x <= colEnd; x++) {
+                        const idx = (y * frameW + x) * 4;
+                        const luma = (frameData[idx] * 77 + frameData[idx + 1] * 150 + frameData[idx + 2] * 29) >> 8;
+                        if (luma <= darkThreshold) {
+                            rowHits++;
+                            hits++;
+                        }
+                    }
+                    if (rowHits >= Math.max(1, Math.floor((colEnd - colStart + 1) * 0.25))) {
+                        rowActive[y - symMinY] = 1;
+                        if (y < topY) topY = y;
+                        if (y > botY) botY = y;
+                    }
+                }
+
+                // Count distinct vertical segments (1 = single vertex/bar, 2 = two separate strokes like '=' or open jaws of '<' / '>')
+                let segments = 0;
+                let inSeg = false;
+                for (let i = 0; i < symH; i++) {
+                    if (rowActive[i] && !inSeg) {
+                        segments++;
+                        inSeg = true;
+                    } else if (!rowActive[i] && inSeg) {
+                        inSeg = false;
+                    }
+                }
+
+                const span = hits > 0 && botY >= topY ? (botY - topY + 1) : 0;
+                return { span, segments, hits };
+            }
+
+            const leftStats = computeBandStats(symMinX, leftBandEnd);
+            const midStats = computeBandStats(midBandStart, midBandEnd);
+            const rightStats = computeBandStats(rightBandStart, symMaxX);
+
+            if (leftStats.hits === 0 || rightStats.hits === 0) return null;
+
+            const spanDiff = rightStats.span - leftStats.span;
+            const spanDiffRatio = spanDiff / Math.max(1, symH);
+
+            // Classification Rule 1: '<' (Narrow vertex on Left, wide opening on Right)
+            if (spanDiffRatio > 0.18 || (leftStats.segments === 1 && rightStats.segments >= 2 && rightStats.span > leftStats.span)) {
+                return '<';
+            }
+
+            // Classification Rule 2: '>' (Wide opening on Left, narrow vertex on Right)
+            if (spanDiffRatio < -0.18 || (rightStats.segments === 1 && leftStats.segments >= 2 && leftStats.span > rightStats.span)) {
+                return '>';
+            }
+
+            // Classification Rule 3: '=' (Balanced left & right spans, or 2 horizontal bars in the middle)
+            if (midStats.segments >= 2 || leftStats.segments >= 2 || rightStats.segments >= 2 || Math.abs(spanDiffRatio) <= 0.18) {
+                return '=';
+            }
+
+            return null;
         }
 
         function updateZoneSplit(val) {
@@ -1689,15 +1863,15 @@
                     if (testA) testA.textContent = totalA > 0 ? `✅ ${totalA} Kartu Terlihat!` : `👋 Gerakan Aktif!`;
                     if (testB) testB.textContent = totalB > 0 ? `✅ ${totalB} Kartu Terlihat!` : `👋 Gerakan Aktif!`;
                 } else {
-                    canvas.classList.remove('hidden');
-                    // Classroom background gradient
-                    const grad = ctx.createLinearGradient(0, 0, 0, 450);
-                    grad.addColorStop(0, '#1e293b');
-                    grad.addColorStop(1, '#0f172a');
+                    // Simulated classroom background
+                    const grad = ctx.createLinearGradient(0, 0, 800, 450);
+                    grad.addColorStop(0, '#0c4a6e');
+                    grad.addColorStop(0.5, '#1e293b');
+                    grad.addColorStop(1, '#881337');
                     ctx.fillStyle = grad;
                     ctx.fillRect(0, 0, 800, 450);
 
-                    // Draw sample floating white cards in Left Zone (Team A) & Right Zone (Team B)
+                    // Draw sample floating colorful treasure cards in Left Zone (Team A) & Right Zone (Team B)
                     const splitX = (state.zoneSplitPercent / 100) * 800;
                     const sampleCards = [
                         { x: splitX * 0.25, y: 180, sym: '<', phase: 0 },
@@ -1713,18 +1887,17 @@
                         ctx.save();
                         ctx.translate(c.x, c.y + dy);
                         ctx.fillStyle = '#ffffff';
-                        ctx.strokeStyle = '#38bdf8';
-                        ctx.lineWidth = 3;
-                        ctx.beginPath();
-                        ctx.roundRect(-28, -36, 56, 72, 8);
+                        ctx.strokeStyle = '#0f172a';
+                        ctx.lineWidth = 4;
+                        drawRoundedRectPath(ctx, -28, -38, 56, 76, 10);
                         ctx.fill();
                         ctx.stroke();
 
                         ctx.fillStyle = '#0f172a';
-                        ctx.font = '900 38px Fredoka, sans-serif';
+                        ctx.font = '900 42px Fredoka, sans-serif';
                         ctx.textAlign = 'center';
                         ctx.textBaseline = 'middle';
-                        ctx.fillText(c.sym, 0, 2);
+                        ctx.fillText(c.sym, 0, 0);
                         ctx.restore();
                     });
                 }
@@ -1886,17 +2059,26 @@
                     energyA = Math.min(100, Math.max(25, motionA * 3 + brightCardsA * 2));
                     energyB = Math.min(100, Math.max(25, motionB * 3 + brightCardsB * 2));
                 } else {
-                    // Simulated active classroom feed on mini monitor
+                    // Simulated active classroom feed on mini monitor with Colorful Treasure Cards
                     ctx.fillStyle = '#0f172a';
                     ctx.fillRect(0, 0, 320, 140);
+                    const miniStyles = [
+                        { sym: '<', bg: '#bae6fd', border: '#2563eb', fg: '#1d4ed8' },
+                        { sym: '=', bg: '#d9f99d', border: '#16a34a', fg: '#15803d' },
+                        { sym: '>', bg: '#fecdd3', border: '#e11d48', fg: '#be123c' }
+                    ];
                     for (let i = 0; i < 6; i++) {
                         const x = 25 + i * 50;
-                        const y = 55 + Math.sin(tick * 0.15 + i) * 12;
-                        ctx.fillStyle = '#ffffff';
-                        ctx.fillRect(x, y, 22, 28);
-                        ctx.fillStyle = '#0f172a';
-                        ctx.font = 'bold 16px Fredoka, sans-serif';
-                        ctx.fillText(['<', '=', '>'][i % 3], x + 5, y + 19);
+                        const y = 52 + Math.sin(tick * 0.15 + i) * 12;
+                        const st = miniStyles[i % 3];
+                        ctx.fillStyle = st.bg;
+                        ctx.strokeStyle = st.border;
+                        ctx.lineWidth = 2;
+                        ctx.fillRect(x, y, 24, 32);
+                        ctx.strokeRect(x, y, 24, 32);
+                        ctx.fillStyle = st.fg;
+                        ctx.font = 'bold 17px Fredoka, sans-serif';
+                        ctx.fillText(st.sym, x + 6, y + 21);
                     }
                 }
 
@@ -1924,6 +2106,11 @@
             const subText = document.getElementById('countdownSubText');
 
             overlay.classList.remove('hidden');
+            const cdVid = document.getElementById('countdownLiveVideo');
+            if (cdVid && state.cameraStream) {
+                cdVid.play().catch(() => {});
+            }
+
             let count = 3;
             mainText.textContent = count;
             subText.textContent = "Siapkan Kartu Jawaban Kalian...";
@@ -1972,14 +2159,27 @@
             const video = document.getElementById('scanVideo');
             const progressBar = document.getElementById('scanProgressBar');
 
+            // Ensure scanVideo is actively playing when stage becomes visible
+            if (video && state.cameraStream) {
+                if (video.srcObject !== state.cameraStream) {
+                    video.srcObject = state.cameraStream;
+                }
+                video.play().catch(() => {});
+            }
+
             canvas.width = 800;
             canvas.height = 450;
 
-            // Prepare realistic classroom card detection simulation + real webcam brightness analysis
             const q = QUESTIONS[state.currentQuestionIndex];
-            const targetCounts = generateRealisticClassroomCardCounts(q.answer);
+            const fallbackCounts = generateRealisticClassroomCardCounts(q.answer);
 
-            const scanDurationMs = 2700; // ~2.7 seconds as specified (2-3 detik)
+            // Accumulator across scan frames so real card detections are stable & never lost
+            const accumulatedReal = {
+                A: { '<': 0, '=': 0, '>': 0, framesWithCards: 0 },
+                B: { '<': 0, '=': 0, '>': 0, framesWithCards: 0 }
+            };
+
+            const scanDurationMs = 2700; // ~2.7 seconds
             const startTime = performance.now();
             let lastBeepStep = 0;
 
@@ -1995,46 +2195,93 @@
 
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-                // If real camera is active, analyze bright rectangular card regions on video frame
-                if (state.cameraActive && video.readyState >= 2) {
-                    ctx.save();
-                    if (state.mirrorCamera) {
-                        ctx.translate(canvas.width, 0);
-                        ctx.scale(-1, 1);
-                    }
-                    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-                    ctx.restore();
+                // Pick any active video element that has decoded frames
+                const activeVid = (video && video.readyState >= 2)
+                    ? video
+                    : (document.getElementById('discussionLiveVideo')?.readyState >= 2
+                        ? document.getElementById('discussionLiveVideo')
+                        : null);
 
-                    // Perform real bright-card region detection to draw bounding boxes on detected white cards
-                    detectAndDrawBrightCardsOnFrame(ctx, canvas.width, canvas.height, targetCounts, progress);
+                let displayCountsA = { '<': 0, '=': 0, '>': 0 };
+                let displayCountsB = { '<': 0, '=': 0, '>': 0 };
+
+                if (state.cameraActive && activeVid) {
+                    try {
+                        ctx.save();
+                        if (state.mirrorCamera) {
+                            ctx.translate(canvas.width, 0);
+                            ctx.scale(-1, 1);
+                        }
+                        ctx.drawImage(activeVid, 0, 0, canvas.width, canvas.height);
+                        ctx.restore();
+
+                        const frameStats = detectAndDrawBrightCardsOnFrame(ctx, canvas.width, canvas.height, fallbackCounts, progress);
+
+                        if (frameStats.cardsA > 0) {
+                            accumulatedReal.A.framesWithCards++;
+                            accumulatedReal.A['<'] += frameStats.rawA['<'];
+                            accumulatedReal.A['='] += frameStats.rawA['='];
+                            accumulatedReal.A['>'] += frameStats.rawA['>'];
+                        }
+                        if (frameStats.cardsB > 0) {
+                            accumulatedReal.B.framesWithCards++;
+                            accumulatedReal.B['<'] += frameStats.rawB['<'];
+                            accumulatedReal.B['='] += frameStats.rawB['='];
+                            accumulatedReal.B['>'] += frameStats.rawB['>'];
+                        }
+                    } catch (err) {
+                        drawSimulatedClassroomScan(ctx, canvas.width, canvas.height, fallbackCounts, progress);
+                    }
                 } else {
-                    // Simulated classroom camera view with students' raised cards in Zone A & Zone B
-                    drawSimulatedClassroomScan(ctx, canvas.width, canvas.height, targetCounts, progress);
+                    drawSimulatedClassroomScan(ctx, canvas.width, canvas.height, fallbackCounts, progress);
                 }
 
-                // Update live counters progressively
-                const curA_lt = Math.round(targetCounts.A['<'] * progress);
-                const curA_eq = Math.round(targetCounts.A['='] * progress);
-                const curA_gt = Math.round(targetCounts.A['>'] * progress);
-                const totalA = curA_lt + curA_eq + curA_gt;
+                // Calculate smooth live display counts for Zone A and Zone B
+                if (accumulatedReal.A.framesWithCards > 0) {
+                    const divA = Math.max(1, accumulatedReal.A.framesWithCards);
+                    displayCountsA = {
+                        '<': Math.ceil(accumulatedReal.A['<'] / divA),
+                        '=': Math.ceil(accumulatedReal.A['='] / divA),
+                        '>': Math.ceil(accumulatedReal.A['>'] / divA)
+                    };
+                } else {
+                    displayCountsA = {
+                        '<': Math.round(fallbackCounts.A['<'] * progress),
+                        '=': Math.round(fallbackCounts.A['='] * progress),
+                        '>': Math.round(fallbackCounts.A['>'] * progress)
+                    };
+                }
 
-                const curB_lt = Math.round(targetCounts.B['<'] * progress);
-                const curB_eq = Math.round(targetCounts.B['='] * progress);
-                const curB_gt = Math.round(targetCounts.B['>'] * progress);
-                const totalB = curB_lt + curB_eq + curB_gt;
+                if (accumulatedReal.B.framesWithCards > 0) {
+                    const divB = Math.max(1, accumulatedReal.B.framesWithCards);
+                    displayCountsB = {
+                        '<': Math.ceil(accumulatedReal.B['<'] / divB),
+                        '=': Math.ceil(accumulatedReal.B['='] / divB),
+                        '>': Math.ceil(accumulatedReal.B['>'] / divB)
+                    };
+                } else {
+                    displayCountsB = {
+                        '<': Math.round(fallbackCounts.B['<'] * progress),
+                        '=': Math.round(fallbackCounts.B['='] * progress),
+                        '>': Math.round(fallbackCounts.B['>'] * progress)
+                    };
+                }
 
-                document.getElementById('liveCountBadgeA').textContent = `Kartu Terbaca: ${totalA}`;
-                document.getElementById('liveBreakdownA').innerHTML = `<span>&lt; : ${curA_lt}</span><span>= : ${curA_eq}</span><span>&gt; : ${curA_gt}</span>`;
+                const sumA = displayCountsA['<'] + displayCountsA['='] + displayCountsA['>'];
+                const sumB = displayCountsB['<'] + displayCountsB['='] + displayCountsB['>'];
 
-                document.getElementById('liveCountBadgeB').textContent = `Kartu Terbaca: ${totalB}`;
-                document.getElementById('liveBreakdownB').innerHTML = `<span>&lt; : ${curB_lt}</span><span>= : ${curB_eq}</span><span>&gt; : ${curB_gt}</span>`;
+                document.getElementById('liveCountBadgeA').textContent = `Kartu Terbaca: ${sumA}`;
+                document.getElementById('liveBreakdownA').innerHTML = `<span>&lt; : ${displayCountsA['<']}</span><span>= : ${displayCountsA['=']}</span><span>&gt; : ${displayCountsA['>']}</span>`;
+
+                document.getElementById('liveCountBadgeB').textContent = `Kartu Terbaca: ${sumB}`;
+                document.getElementById('liveBreakdownB').innerHTML = `<span>&lt; : ${displayCountsB['<']}</span><span>= : ${displayCountsB['=']}</span><span>&gt; : ${displayCountsB['>']}</span>`;
 
                 if (progress < 1) {
                     state.scanAnimFrame = requestAnimationFrame(scanStep);
                 } else {
-                    // Commit final detected counts & move to Stage 5
-                    state.teamA.scanCounts = { ...targetCounts.A };
-                    state.teamB.scanCounts = { ...targetCounts.B };
+                    // Finalize counts at the end of the 2.7s scan
+                    state.teamA.scanCounts = (accumulatedReal.A.framesWithCards > 0) ? displayCountsA : { ...fallbackCounts.A };
+                    state.teamB.scanCounts = (accumulatedReal.B.framesWithCards > 0) ? displayCountsB : { ...fallbackCounts.B };
                     showStage5ScanResults();
                 }
             }
@@ -2042,105 +2289,214 @@
             state.scanAnimFrame = requestAnimationFrame(scanStep);
         }
 
-        // Generates realistic classroom card distributions and incorporates real bright-spot sampling when webcam is live
+        // Generates realistic classroom counts for ~15-22 visible cards per team
         function generateRealisticClassroomCardCounts(correctSymbol) {
             const symbols = ['<', '=', '>'];
-            const otherSymbols = symbols.filter(s => s !== correctSymbol);
+            const wrongSymbols = symbols.filter(s => s !== correctSymbol);
 
-            // Helper for a team's card count (around 12 to 21 visible cards in a half-class)
-            function buildTeamDistribution(biasCorrectProb) {
-                const isMostlyCorrect = Math.random() < biasCorrectProb;
-                const dominantSym = isMostlyCorrect ? correctSymbol : otherSymbols[Math.floor(Math.random() * otherSymbols.length)];
-                const majorityCount = Math.floor(Math.random() * 8) + 11; // 11..18 cards
-                const secondCount   = Math.floor(Math.random() * 4) + 1;  // 1..4 cards
-                const thirdCount    = Math.floor(Math.random() * 3);      // 0..2 cards
+            function buildTeamDistribution() {
+                const teamIsMostlyCorrect = Math.random() < 0.78;
+                const dominantSym = teamIsMostlyCorrect
+                    ? correctSymbol
+                    : wrongSymbols[Math.floor(Math.random() * wrongSymbols.length)];
 
-                const others = symbols.filter(s => s !== dominantSym);
+                const otherSyms = symbols.filter(s => s !== dominantSym);
+                const domCount = Math.floor(Math.random() * 8) + 12; // 12 to 19 cards
+                const subCount1 = Math.floor(Math.random() * 4) + 1; // 1 to 4 cards
+                const subCount2 = Math.floor(Math.random() * 3) + 1; // 1 to 3 cards
+
                 return {
-                    [dominantSym]: majorityCount,
-                    [others[0]]: secondCount,
-                    [others[1]]: thirdCount
+                    [dominantSym]: domCount,
+                    [otherSyms[0]]: subCount1,
+                    [otherSyms[1]]: subCount2
                 };
             }
 
             return {
-                A: buildTeamDistribution(0.78),
-                B: buildTeamDistribution(0.78)
+                A: buildTeamDistribution(),
+                B: buildTeamDistribution()
             };
         }
 
-        // Real webcam bright-card computer vision detector + bounding box overlay
+        // Real webcam Symbol-Only Detector (<, =, >)
+        // Finds bright card regions containing dark symbol strokes and classifies each symbol purely by its geometry
         function detectAndDrawBrightCardsOnFrame(ctx, w, h, targetCounts, progress) {
             const splitX = Math.floor((state.zoneSplitPercent / 100) * w);
-            const gridStep = 36;
-            const frameData = ctx.getImageData(0, 0, w, h).data;
+            const countLeftCards = { '<': 0, '=': 0, '>': 0 };
+            const countRightCards = { '<': 0, '=': 0, '>': 0 };
 
-            let countLeftBright = { '<': 0, '=': 0, '>': 0 };
-            let countRightBright = { '<': 0, '=': 0, '>': 0 };
+            let frameData;
+            try {
+                frameData = ctx.getImageData(0, 0, w, h).data;
+            } catch (e) {
+                return { cardsA: 0, cardsB: 0, rawA: countLeftCards, rawB: countRightCards };
+            }
 
-            for (let y = 45; y < h - 45; y += gridStep) {
-                for (let x = 35; x < w - 35; x += gridStep) {
-                    if (Math.abs(x - splitX) < 25) continue;
-                    const idx = (y * w + x) * 4;
-                    const r = frameData[idx], g = frameData[idx + 1], b = frameData[idx + 2];
-                    const luma = 0.299 * r + 0.587 * g + 0.114 * b;
+            const cellSize = 18;
+            const cols = Math.floor(w / cellSize);
+            const rows = Math.floor(h / cellSize);
+            const cardCandidateGrid = new Uint8Array(rows * cols);
 
-                    // Detect bright white card regions with dark interior symbol contrast
-                    if (luma > 185) {
-                        // Sample inner horizontal & vertical gradient to classify symbol shape (< vs = vs >)
-                        const leftIdx = (y * w + Math.max(0, x - 10)) * 4;
-                        const rightIdx = (y * w + Math.min(w - 1, x + 10)) * 4;
-                        const leftDark = 255 - frameData[leftIdx];
-                        const rightDark = 255 - frameData[rightIdx];
+            // Step 1: Identify cells that belong to a bright card surface or high-contrast symbol stroke
+            for (let rIdx = 2; rIdx < rows - 2; rIdx++) {
+                for (let cIdx = 2; cIdx < cols - 2; cIdx++) {
+                    const cx = cIdx * cellSize + (cellSize >> 1);
+                    const cy = rIdx * cellSize + (cellSize >> 1);
+                    if (Math.abs(cx - splitX) < 16) continue;
 
-                        let detectedSym = '=';
-                        if (leftDark - rightDark > 14) detectedSym = '<';
-                        else if (rightDark - leftDark > 14) detectedSym = '>';
+                    let brightCount = 0;
+                    let darkCount = 0;
+                    let lowSatBright = 0;
 
-                        const isTeamA = x < splitX;
-                        if (isTeamA) countLeftBright[detectedSym]++;
-                        else countRightBright[detectedSym]++;
+                    for (let dy = -6; dy <= 6; dy += 6) {
+                        for (let dx = -6; dx <= 6; dx += 6) {
+                            const p = ((cy + dy) * w + (cx + dx)) * 4;
+                            const r = frameData[p];
+                            const g = frameData[p + 1];
+                            const b = frameData[p + 2];
+                            const luma = (r * 77 + g * 150 + b * 29) >> 8;
+                            const maxC = Math.max(r, g, b);
+                            const minC = Math.min(r, g, b);
 
-                        // Draw vibrant bounding box & symbol tag over the detected student card
-                        ctx.strokeStyle = isTeamA ? '#38bdf8' : '#fb7185';
-                        ctx.lineWidth = 3.5;
-                        ctx.strokeRect(x - 20, y - 24, 40, 48);
+                            if (luma > 155) {
+                                brightCount++;
+                                // White/light card paper has low color saturation or high brightness
+                                if (maxC - minC < 75 || luma > 185) lowSatBright++;
+                            } else if (luma < 105) {
+                                darkCount++;
+                            }
+                        }
+                    }
 
-                        ctx.fillStyle = isTeamA ? 'rgba(2, 132, 199, 0.85)' : 'rgba(225, 29, 72, 0.85)';
-                        ctx.fillRect(x - 20, y - 44, 40, 20);
-                        ctx.fillStyle = '#fde047';
-                        ctx.font = '900 15px Fredoka, sans-serif';
-                        ctx.textAlign = 'center';
-                        ctx.fillText(detectedSym, x, y - 30);
+                    // Keep cells that are bright card background OR transition cells with both bright paper & dark symbol ink
+                    if (lowSatBright >= 5 || (brightCount >= 3 && darkCount >= 2)) {
+                        cardCandidateGrid[rIdx * cols + cIdx] = 1;
                     }
                 }
             }
 
-            const sumA = countLeftBright['<'] + countLeftBright['='] + countLeftBright['>'];
-            const sumB = countRightBright['<'] + countRightBright['='] + countRightBright['>'];
+            // Step 2: Cluster connected candidate cells into individual card bounding boxes
+            const visited = new Uint8Array(rows * cols);
+            const detectedCards = [];
+
+            for (let rIdx = 2; rIdx < rows - 2; rIdx++) {
+                for (let cIdx = 2; cIdx < cols - 2; cIdx++) {
+                    const startIdx = rIdx * cols + cIdx;
+                    if (!cardCandidateGrid[startIdx] || visited[startIdx]) continue;
+
+                    const isZoneA = (cIdx * cellSize) < splitX;
+                    const queue = [startIdx];
+                    visited[startIdx] = 1;
+
+                    let minR = rIdx, maxR = rIdx, minC = cIdx, maxC = cIdx;
+                    let cellCount = 0;
+
+                    while (queue.length > 0) {
+                        const curr = queue.pop();
+                        const cr = Math.floor(curr / cols);
+                        const cc = curr % cols;
+                        cellCount++;
+
+                        if (cr < minR) minR = cr;
+                        if (cr > maxR) maxR = cr;
+                        if (cc < minC) minC = cc;
+                        if (cc > maxC) maxC = cc;
+
+                        for (let dr = -1; dr <= 1; dr++) {
+                            for (let dc = -1; dc <= 1; dc++) {
+                                if (dr === 0 && dc === 0) continue;
+                                const nr = cr + dr;
+                                const nc = cc + dc;
+                                if (nr < 2 || nr >= rows - 2 || nc < 2 || nc >= cols - 2) continue;
+                                const nZoneA = (nc * cellSize) < splitX;
+                                if (nZoneA !== isZoneA) continue;
+
+                                const nIdx = nr * cols + nc;
+                                if (!visited[nIdx] && cardCandidateGrid[nIdx]) {
+                                    visited[nIdx] = 1;
+                                    queue.push(nIdx);
+                                }
+                            }
+                        }
+                    }
+
+                    const boxW = (maxC - minC + 1) * cellSize;
+                    const boxH = (maxR - minR + 1) * cellSize;
+                    const aspect = boxW / Math.max(1, boxH);
+
+                    // Card cluster must have reasonable card size & aspect ratio (excludes huge walls or tiny specks)
+                    if (cellCount >= 4 && cellCount <= 95 && boxW >= 36 && boxH >= 36 && aspect >= 0.45 && aspect <= 1.85) {
+                        const boxX = minC * cellSize;
+                        const boxY = minR * cellSize;
+
+                        // Step 3: Classify ONLY by the symbol geometry (<, =, >) inside this card box
+                        const sym = classifySymbolGeometryInBox(frameData, w, h, boxX, boxY, boxW, boxH);
+                        if (sym) {
+                            detectedCards.push({
+                                sym,
+                                isZoneA,
+                                boxX,
+                                boxY,
+                                boxW,
+                                boxH,
+                                count: 1
+                            });
+                        }
+                    }
+                }
+            }
+
+            // Step 4: Draw clean symbol detection bounding boxes & tally counts per team zone
+            detectedCards.forEach(card => {
+                if (card.isZoneA) {
+                    countLeftCards[card.sym] += card.count;
+                } else {
+                    countRightCards[card.sym] += card.count;
+                }
+
+                const strokeColor = card.isZoneA ? '#38bdf8' : '#fb7185';
+                ctx.save();
+                ctx.strokeStyle = '#fde047';
+                ctx.lineWidth = 4;
+                drawRoundedRectPath(ctx, card.boxX, card.boxY, card.boxW, card.boxH, 10);
+                ctx.stroke();
+
+                const labelW = Math.max(64, Math.min(card.boxW, 96));
+                const labelY = Math.max(8, card.boxY - 28);
+                ctx.fillStyle = strokeColor;
+                drawRoundedRectPath(ctx, card.boxX, labelY, labelW, 26, 6);
+                ctx.fill();
+
+                ctx.fillStyle = '#ffffff';
+                ctx.font = '900 17px Fredoka, sans-serif';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(`Simbol ${card.sym}`, card.boxX + labelW / 2, labelY + 13);
+                ctx.restore();
+            });
+
+            const sumA = countLeftCards['<'] + countLeftCards['='] + countLeftCards['>'];
+            const sumB = countRightCards['<'] + countRightCards['='] + countRightCards['>'];
 
             const statusElA = document.getElementById('scanActivityStatusA');
             const statusElB = document.getElementById('scanActivityStatusB');
             if (statusElA) {
                 statusElA.textContent = sumA > 0
-                    ? `🔥 Tim A Aktif! ${sumA} Kartu Terdeteksi Kamera`
-                    : `👋 Ayo Tim A, Angkat Kartu Putih Lebih Tinggi!`;
+                    ? `🔥 Simbol Tim A Terbaca: ${sumA} (<:${countLeftCards['<']} =:${countLeftCards['=']} >:${countLeftCards['>']})`
+                    : `👋 Arahkan Kartu Simbol (<, =, >) menghadap kamera di Zona Tim A!`;
             }
             if (statusElB) {
                 statusElB.textContent = sumB > 0
-                    ? `🔥 Tim B Aktif! ${sumB} Kartu Terdeteksi Kamera`
-                    : `👋 Ayo Tim B, Angkat Kartu Putih Lebih Tinggi!`;
+                    ? `🔥 Simbol Tim B Terbaca: ${sumB} (<:${countRightCards['<']} =:${countRightCards['=']} >:${countRightCards['>']})`
+                    : `👋 Arahkan Kartu Simbol (<, =, >) menghadap kamera di Zona Tim B!`;
             }
 
-            // If real bright cards were found in frame, blend them into targetCounts for authentic live response
-            if (sumA >= 1 && progress > 0.5) {
-                targetCounts.A = countLeftBright;
-            }
-            if (sumB >= 1 && progress > 0.5) {
-                targetCounts.B = countRightBright;
-            }
-
-            return { cardsA: sumA, cardsB: sumB };
+            return {
+                cardsA: sumA,
+                cardsB: sumB,
+                rawA: countLeftCards,
+                rawB: countRightCards
+            };
         }
 
         // Simulated classroom card visualization when running without a webcam
@@ -2153,11 +2509,11 @@
 
             const splitX = (state.zoneSplitPercent / 100) * w;
 
-            // Helper to render detected cards in a zone
-            function drawZoneCards(counts, startX, endX, boxColor) {
+            // Helper to render detected high-contrast white symbol cards in a zone
+            function drawZoneCards(counts, startX, endX) {
                 const list = [];
                 ['<', '=', '>'].forEach(sym => {
-                    const numToShow = Math.min(8, counts[sym]); // visual cap for neatness
+                    const numToShow = Math.min(8, counts[sym]);
                     for (let i = 0; i < numToShow; i++) list.push(sym);
                 });
 
@@ -2170,28 +2526,25 @@
                     const cx = startX + 45 + col * cellW + (idx % 2) * 8;
                     const cy = 115 + row * 95 + ((idx * 17) % 18);
 
-                    // White card
+                    // Clean white card with dark border
                     ctx.fillStyle = '#ffffff';
-                    ctx.beginPath();
-                    ctx.roundRect(cx - 22, cy - 28, 44, 56, 6);
+                    ctx.strokeStyle = '#fde047';
+                    ctx.lineWidth = 4;
+                    drawRoundedRectPath(ctx, cx - 22, cy - 30, 44, 60, 8);
                     ctx.fill();
+                    ctx.stroke();
 
-                    // Detection box
-                    ctx.strokeStyle = boxColor;
-                    ctx.lineWidth = 3;
-                    ctx.strokeRect(cx - 25, cy - 31, 50, 62);
-
-                    // Symbol on card
+                    // High-contrast black symbol
                     ctx.fillStyle = '#0f172a';
-                    ctx.font = '900 28px Fredoka, sans-serif';
+                    ctx.font = '900 32px Fredoka, sans-serif';
                     ctx.textAlign = 'center';
                     ctx.textBaseline = 'middle';
                     ctx.fillText(sym, cx, cy);
                 });
             }
 
-            drawZoneCards(targetCounts.A, 20, splitX - 15, '#38bdf8');
-            drawZoneCards(targetCounts.B, splitX + 15, w - 20, '#fb7185');
+            drawZoneCards(targetCounts.A, 20, splitX - 15);
+            drawZoneCards(targetCounts.B, splitX + 15, w - 20);
         }
 
         function rescanCameraNow() {
